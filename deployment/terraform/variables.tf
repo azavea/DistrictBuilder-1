@@ -13,7 +13,7 @@ variable "aws_region" {
 }
 
 variable "app_server_instance_type" {
-  default = "t2.small"
+  default = "m5.large"
 }
 
 variable "ssl_certificate_arn" {}
