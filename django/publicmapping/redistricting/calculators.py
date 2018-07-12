@@ -1433,7 +1433,7 @@ class Interval(CalculatorBase):
         if not self.result is None and 'value' in self.result:
             if 'index' in self.result and 'subject' in self.result:
                 interval = self.result['index']
-                interval_class = "interval_%d" % interval if interval >= 0 else 'no_interval'
+                interval_class = 'no_interval'
                 t = '<span class="{{ class }} {{ result.subject }}">' \
                     '{{ result.value|floatformat:0 }}</span>'
                 c = {'class': interval_class}
