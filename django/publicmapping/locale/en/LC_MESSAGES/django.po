@@ -1343,15 +1343,15 @@ msgstr ""
 
 #: redistricting/templates/editplan.html:154
 msgid "Submit Final Plan to Contest"
-msgstr "Submit Final Map to Contest"
+msgstr "Enter Your Map in the Contest"
 
 #: redistricting/templates/editplan.html:155
 msgid ""
 "You can submit your completed plan to be considered for the contest by "
 "filling out this form."
 msgstr ""
-"You can submit your completed map to be considered for the contest by "
-"filling out this form."
+"Click here, fill out the form, hit submit and you’re entered. (But, take "
+"care, once you hit submit, you can’t take your map back and change it.)"
 
 #: redistricting/templates/editplan.html:156
 #: redistricting/templates/editplan.html:466
@@ -1371,7 +1371,7 @@ msgid ""
 "%(plan_text)s will be added to the \"Shared\" section of the plan chooser."
 msgstr ""
 "By sharing a copy of your %(plan_text)s below, you are making your "
-"%(plan_text)s available to all other users in the system. Give your "
+"%(plan_text)s visible to all other users in the system. Give your "
 "%(plan_text)s a unique name in order to share it. A copy of your current "
 "%(plan_text)s will be added to the \"Shared\" section of the map chooser."
 
@@ -1408,7 +1408,7 @@ msgstr ""
 #: redistricting/templates/editplan.html:183
 #: redistricting/templates/editplan.html:195
 msgid "Verify and Submit Plan to Leaderboards"
-msgstr "Verify and Submit Map to Leaderboards"
+msgstr "Verify and Submit to Leaderboards"
 
 #: redistricting/templates/editplan.html:184
 msgid ""
@@ -1418,11 +1418,12 @@ msgid ""
 "\"unverified\" and you will need to re-verify it in order for it to again be "
 "considered for the leaderboards."
 msgstr ""
-"In order to be considered for placement on the leaderboards your map must "
-"meet the criteria for creating a legal redistricting map. Keep in mind that "
-"as soon as you edit a verified map, it will automatically become \"unverified"
-"\" and you will need to re-verify it in order for it to again be considered "
-"for the leaderboards."
+"You can test how your map compares with others by first asking the system "
+"\"verify\" it (in other words, check whether it's constitutional) then "
+"submitting it to the Draw the Lines leaderboards. (There's one board for each "
+"judging category.) Note well: Verifying your map and submitting to the "
+"leaderboards is NOT the same as entering the contest. It's a way to check your "
+"map  BEFORE you enter it in the DTL contest."
 
 #: redistricting/templates/editplan.html:185
 msgid ""
@@ -1431,8 +1432,8 @@ msgid ""
 "the top ten lists (if your plan ranks in the top ten)."
 msgstr ""
 "By verifying your map, you are <em><strong>not</strong></em> sharing your "
-"map with other users. Your map title and user name will simply show up in "
-"the top ten lists (if your map ranks in the top ten)."
+"map or essay with other users. Your map title and user name will simply "
+"show up in the top 10 lists (if your map ranks in the top ten)."
 
 #: redistricting/templates/editplan.html:187
 msgid "How to verify and submit your plan:"
@@ -1451,8 +1452,8 @@ msgid ""
 "Check the leaderboards to see if your plan ranks in any of the top ten score "
 "types."
 msgstr ""
-"Check the leaderboards to see if your map ranks in any of the top ten score "
-"types."
+"Check the leaderboards to see if your plan ranks in the top 10 for any "
+"criteria."
 
 #: redistricting/templates/editplan.html:206
 msgid ""
@@ -2160,13 +2161,14 @@ msgstr "Redistricting map by DistrictBuilder"
 
 #: redistricting/templates/viewplan.html:894
 msgid "Plan File Export"
-msgstr "Map File Export"
+msgstr "Export Your Map Data"
 
 #: redistricting/templates/viewplan.html:895
 #, python-format
 msgid ""
 "\n"
-"                  The %(bmlll)s index file is a comma-separated-value file "
+"                  Doing this will create a %(bmlll)s index file. "
+"This is a comma-separated-value file "
 "(csv).\n"
 "                  Each line lists the unique id of the building blocks of "
 "each %(plan_text)s\n"
