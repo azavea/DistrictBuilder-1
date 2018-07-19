@@ -798,6 +798,16 @@
       <div class="shadow_top"></div>
       <div class="toolbar ui-widget-header"><h1>{% blocktrans with plan_text|title as plan_text_title %}Share a {{ plan_text_title }}{% endblocktrans %}</h1></div>
       <div class="tab_content">
+          
+        {% block verify_submit %}
+        {% comment %}
+
+        Define a block entitled 'verify_submit': this panel will show the
+        verification and submission instructions for editable plans to
+        registered users when the leaderboard is enabled.
+
+        {% endcomment %}
+        {% endblock %}
           <div id="saveandshare">
               {% block share_panel %}
               {% comment %}
@@ -893,15 +903,6 @@
               </div>
           </div>
         </div>
-        {% block verify_submit %}
-        {% comment %}
-
-        Define a block entitled 'verify_submit': this panel will show the
-        verification and submission instructions for editable plans to
-        registered users when the leaderboard is enabled.
-
-        {% endcomment %}
-        {% endblock %}
     </div>
 </div>
 <div id="toolbar_plans">
