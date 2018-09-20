@@ -2432,7 +2432,7 @@ function mapinit(srs,maxExtent) {
 
                 newRuleTitle = rule.title.indexOf('.') === -1 ? rule.title :
                     rule.title.substring(0, rule.title.indexOf('.'))
-                title.append( numberWithCommas(newRuleTitle) );
+                title.append(numberWithCommas(newRuleTitle));
 
                 row.append(title);
 
