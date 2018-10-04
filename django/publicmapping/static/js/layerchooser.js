@@ -113,7 +113,7 @@ layerchooser = function(options) {
         });
 
         _options.referenceLayerSelect.val('geolevel.4');
-        _options.referenceLayerSelect.trigger('change');
+        setTimeout(function(){ _options.referenceLayerSelect.trigger('change'); }, 1000);
 
         // Trigger event when the show reference layer labels checkbox changes
         _options.referenceLayerLabelsCheck.click(function() {
