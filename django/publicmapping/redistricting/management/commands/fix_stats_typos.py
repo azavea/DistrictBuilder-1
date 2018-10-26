@@ -78,7 +78,7 @@ def reaggregate_plans():
     """
     Reaggreates all plans to incorporate the new data.
 
-    This is a very time consuming process, and may take several days depenging on number of plans
+    This is a very time consuming process, and may take several days depending on number of plans
     """
     print('Reaggregating plans')
     num_plans = Plan.objects.count()
