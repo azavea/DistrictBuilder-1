@@ -1,30 +1,6 @@
 #
 # EC2 resources
 #
-data "aws_ami" "ecs_ami" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["amzn-ami-*-amazon-ecs-optimized"]
-  }
-
-  filter {
-    name   = "owner-alias"
-    values = ["amazon"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
 data "template_file" "user_data" {
   template = "${file("templates/cloud-config.tpl")}"
 
@@ -36,7 +12,7 @@ data "template_file" "user_data" {
 }
 
 resource "aws_instance" "app_server" {
-  ami = "${data.aws_ami.ecs_ami.id}"
+  ami = "${var.ami_id}"
 
   iam_instance_profile                 = "${data.terraform_remote_state.core.app_server_instance_profile}"
   instance_initiated_shutdown_behavior = "stop"
