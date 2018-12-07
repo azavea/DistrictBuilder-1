@@ -14,6 +14,8 @@ data "template_file" "user_data" {
 resource "aws_instance" "app_server" {
   ami = "${var.ami_id}"
 
+  ebs_optimized = true
+
   iam_instance_profile                 = "${data.terraform_remote_state.core.app_server_instance_profile}"
   instance_initiated_shutdown_behavior = "stop"
   instance_type                        = "${var.app_server_instance_type}"
