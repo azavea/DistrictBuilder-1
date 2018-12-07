@@ -12,6 +12,8 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
+variable "ami_id" {}
+
 variable "app_server_instance_type" {
   default = "t2.small"
 }
