@@ -1,5 +1,5 @@
-scrape-submissions
-------------------
+submissions-scraper
+-------------------
 
 This script is a work-around to getting data about submissions into a submissions csv (pulled from the `redistricting_plansubmissions` table). It scrapes the submissions report HTML for each submission line in the CSV and adds `competitiveness`, `split_counties`, `majority_minority`, `compactness`, and `population_equivalence` to each line.
 
