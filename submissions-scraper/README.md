@@ -6,7 +6,7 @@ This script is a work-around to getting data about submissions into a submission
 # Pre-requisites
 
 To use the script, you need to:
- - Install Golang on your machine. (Ensure that you setup the `$HOME/go` directly correctly or setup `$GOPATH` as outlined in documentation [here](https://github.com/golang/go/wiki/SettingGOPATH).)
+ - Install Golang on your machine. (Ensure that you setup the `$HOME/go` directory correctly or setup `$GOPATH` as outlined in documentation [here](https://github.com/golang/go/wiki/SettingGOPATH).)
  - Download the submissions CSV. You can do this by running `\copy (SELECT * FROM redistricting_plansubmission) TO '/tmp/submissions.csv' WITH CSV HEADER` on psql shell and extracting the file down to local.
  - Download the submission reports HTMLs. Generate each report using the management command in the Django docker container. `./manage.py submission_report {ID}`.
 
