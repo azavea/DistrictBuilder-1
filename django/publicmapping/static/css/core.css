@@ -522,8 +522,8 @@ div#content_container {
   left: 168px;
   right: 18px;
   padding-bottom: 15px;
-  padding-bottom: 15px;
-  top: 5px;
+  /* Fix for legislative body dropdown styling. May need additional cleanup. */
+  top: 66px;
 }
 
 div#step_plan div.middlecolumn  {
