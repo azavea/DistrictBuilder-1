@@ -1109,6 +1109,10 @@
             <LegislativeBody ref="congress"/>
             <Blockfile path="/data/pa-congress-new.csv" />
         </Template>
+        <Template name="17 Districts Congressional">
+            <LegislativeBody ref="congress17"/>
+            <Blockfile path="/data/pa-congress-17.csv" />
+        </Template>
     </Templates>
 
     <Project sessionquota="5000" sessiontimeout="15">
