@@ -28,9 +28,8 @@ License:
 
 from datetime import datetime
 from django.core.management.base import BaseCommand
-from optparse import make_option
-from redistricting.models import *
-from redistricting.utils import *
+from redistricting.models import Plan
+from redistricting.tasks import DistrictIndexFile, DistrictShapeFile
 
 
 class Command(BaseCommand):
@@ -39,30 +38,31 @@ class Command(BaseCommand):
     """
     args = None
     help = 'Export a plan or many plans into an index file or shapefile.'
-    option_list = BaseCommand.option_list + (
-        make_option(
+
+    def add_arguments(self, parser):
+        parser.add_argument(
             '-p',
             '--plan',
             dest='plan_id',
             default=None,
-            type='int',
+            type=int,
             action='store',
-            help='Choose a single plan to export'),
-        make_option(
+            help='Choose a single plan to export')
+        parser.add_argument(
             '-s',
             '--shared',
             dest='is_shared',
             default=False,
             action='store_true',
-            help='Only export shared plans'),
-        make_option(
+            help='Only export shared plans')
+        parser.add_argument(
             '-t',
             '--type',
             dest='export_type',
             default='index',
             action='store',
-            help="'index' = index file, 'shape' = shape file"),
-    )
+            help="'index' = index file, 'shape' = shape file")
+
 
     def handle(self, *args, **options):
         """
@@ -92,10 +92,10 @@ class Command(BaseCommand):
                 f = DistrictIndexFile.plan2index(p.id)
             elif options.get('export_type') == 'shape':
                 # Write each plan to a zipped shape file in /tmp
-                f = DistrictShapeFile.plan2shape(p)
+                f = DistrictShapeFile.plan2shape(p.id)
 
             if verbosity > 0:
-                self.stdout.write('Data stored in file: %s\n' % f.name)
+                self.stdout.write('Data stored in file: %s\n' % f)
 
         if verbosity > 0:
             self.stdout.write('Export finished at %s\n' % (datetime.now()))
