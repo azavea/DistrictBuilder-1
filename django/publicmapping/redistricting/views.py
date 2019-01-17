@@ -551,8 +551,7 @@ def commonplan(request, planid):
     long_label = body_member_long_label.strip().lower()
 
     has_regions = Region.objects.all().count() > 1
-    bodies = LegislativeBody.objects.all().order_by('region__sort_key',
-                                                    'sort_key')
+    bodies = LegislativeBody.objects.all().order_by('max_districts')
     l_bodies = [
         b for b in bodies
         if b in [
