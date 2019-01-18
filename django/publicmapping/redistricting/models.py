@@ -1666,8 +1666,7 @@ class Plan(models.Model):
             # This is desired, and will keep any harmful array values out of the query.
             qset = qset.filter(
                 district_id__in=[int(id) for id in district_ids])
-            exclude_unassigned = len(
-                filter(lambda x: int(x) == 0, district_ids)) == 0
+            exclude_unassigned = all(int(x) != 0 for x in district_ids)
 
         # Don't return Unassigned district unless it was explicitly requested
         if exclude_unassigned:
