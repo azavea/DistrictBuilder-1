@@ -3841,14 +3841,13 @@ class ScoreFunction(BaseModel):
 
                     # If this is a plan score and the argument is a
                     # district score, extract the districts from the
-                    # plan, score each individually, # and pass into the
+                    # plan, score each individually, and pass into the
                     # score function as a list
-                    if not (self.is_planscore and not score_fn.is_planscore):
-                        calc.arg_dict[arg.argument] = ('literal',
-                                                       score_fn.score(
-                                                           dp,
-                                                           format=format,
-                                                           version=version))
+                    if not self.is_planscore or score_fn.is_planscore:
+                        calc.arg_dict[arg.argument] = (
+                            'literal',
+                            score_fn.score(dp, format=format, version=version)
+                        )
                     else:
                         version = dp.version if version is None else version
                         for d in dp.get_districts_at_version(version):
