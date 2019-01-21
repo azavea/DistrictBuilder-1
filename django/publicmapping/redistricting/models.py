@@ -3474,6 +3474,21 @@ class Profile(models.Model):
     # A user's password hint.
     pass_hint = models.CharField(max_length=256)
 
+    # A user's county
+    county = models.CharField(max_length=50, blank=False, null=True)
+
+    # A user's contest division
+    contest_division = models.CharField(
+        choices=(
+            ('ADULT', 'Adult (non-student)'),
+            ('YOUTH', 'Youth (Age 13 through Grade 12)'),
+            ('ACADM', 'Higher Ed (Undergraduate, graduate, professional'),
+        ),
+        max_length=5,
+        blank=False,
+        null=True
+    )
+
     def __unicode__(self):
         """
         Represent the Profile as a unicode string. This is the a string

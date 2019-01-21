@@ -255,6 +255,7 @@ div#logoffdlg {
     font-weight: bold;
 }
 form#registerForm input.field, form#registerForm input.error,
+form#registerForm select.field, form#forgotForm select.input,
 form#forgotForm input.field, form#forgotForm input.error {
     padding: 0 0 0 8px;
     width: 230px;
