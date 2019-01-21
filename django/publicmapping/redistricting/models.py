@@ -4434,15 +4434,19 @@ class ComputedDistrictScore(models.Model):
             logger.debug('Reason:', ex)
             return None
 
-        if created == True:
+        try:
+            # Since we create the object blank, it's possible to hit a race condition where
+            # the object already existed, but has no value saved. Try to load the value,
+            # and if it fails then calculate it.
+            score = cPickle.loads(str(cache.value))
+        except Exception:
+            # The object didn't have an already cached value, so calculate it
             score = function.score(district, format='raw')
-            cache.value = cPickle.dumps(score)
-            cache.save()
-        else:
-            try:
-                score = cPickle.loads(str(cache.value))
-            except:
-                score = function.score(district, format='raw')
+            # To avoid having multiple processes hitting the database with the same write,
+            # only update the object if we were the one that created it initially
+            if created:
+                cache.value = cPickle.dumps(score)
+                cache.save()
 
         if format != 'raw':
             calc = function.get_calculator()
@@ -4519,16 +4523,17 @@ class ComputedPlanScore(models.Model):
                 plan.id)
             return None
 
-        if created:
+        try:
+            # Since we create the object blank, it's possible to hit a race condition where
+            # the object already existed, but has no value saved. Try to load the value,
+            # and if it fails then calculate it.
+            score = cPickle.loads(str(cache.value))
+        except Exception:
+            # The object didn't have an already cached value, so calculate it
             score = function.score(plan, format='raw', version=plan_version)
-            cache.value = cPickle.dumps(score)
-            cache.save()
-        else:
-            try:
-                score = cPickle.loads(str(cache.value))
-            except:
-                score = function.score(
-                    plan, format='raw', version=plan_version)
+            # To avoid having multiple processes hitting the database with the same write,
+            # only update the object if we were the one that created it initially
+            if created:
                 cache.value = cPickle.dumps(score)
                 cache.save()
 
