@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td class="fname">{% trans "Password Hint" %} *</td>
-                <td><input id="passwordhint" name="passwordhint" class="field" maxlength="30"
+                <td><input id="passwordhint" name="passwordhint" class="field required" maxlength="30"
                 {% if is_registered %}
                     value="{{ userinfo.password_hint }}"
                 {% endif %}/></td>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
                 <td class="fname">{% trans "Email Address" %} *</td>
-                <td><input id="email" name="email" class="field" maxlength="75"
+                <td><input id="email" name="email" class="field required" maxlength="75"
                 {% if is_registered %}
                     value="{{ userinfo.email }}"
                 {% endif %}/><br/>
@@ -62,8 +62,8 @@
                 {% endif %}/></td>
             </tr>
             <tr>
-                <td class="fname">{% trans "Organization/School" %}</td>
-                <td><input id="organization" name="organization" class="field" maxlength="30"
+                <td class="fname">{% trans "Organization/School" %} *</td>
+                <td><input id="organization" name="organization" class="field required" maxlength="30"
                 {% if is_registered %}
                     value="{{ userinfo.organization }}"
                 {% endif %}/></td>
@@ -71,87 +71,87 @@
             <tr>
                 <td class="fname">{% trans "County" %} *</td>
                 <td>
-                    <select name="county" class="field required" maxlength="50">
-                        <option disabled selected value>Select an option</option>
-                        <option value="Non-PA Resident">Non-PA Resident</option>
-                        <option value="Adams">Adams</option>
-                        <option value="Allegheny">Allegheny</option>
-                        <option value="Armstrong">Armstrong</option>
-                        <option value="Beaver">Beaver</option>
-                        <option value="Bedford">Bedford</option>
-                        <option value="Berks">Berks</option>
-                        <option value="Blair">Blair</option>
-                        <option value="Bradford">Bradford</option>
-                        <option value="Bucks">Bucks</option>
-                        <option value="Butler">Butler</option>
-                        <option value="Cambria">Cambria</option>
-                        <option value="Cameron">Cameron</option>
-                        <option value="Carbon">Carbon</option>
-                        <option value="Centre">Centre</option>
-                        <option value="Chester">Chester</option>
-                        <option value="Clarion">Clarion</option>
-                        <option value="Clearfield">Clearfield</option>
-                        <option value="Clinton">Clinton</option>
-                        <option value="Columbia">Columbia</option>
-                        <option value="Crawford">Crawford</option>
-                        <option value="Cumberland">Cumberland</option>
-                        <option value="Dauphin">Dauphin</option>
-                        <option value="Delaware">Delaware</option>
-                        <option value="Elk">Elk</option>
-                        <option value="Erie">Erie</option>
-                        <option value="Fayette">Fayette</option>
-                        <option value="Forest">Forest</option>
-                        <option value="Franklin">Franklin</option>
-                        <option value="Fulton">Fulton</option>
-                        <option value="Greene">Greene</option>
-                        <option value="Huntingdon">Huntingdon</option>
-                        <option value="Indiana">Indiana</option>
-                        <option value="Jefferson">Jefferson</option>
-                        <option value="Juniata">Juniata</option>
-                        <option value="Lackawanna">Lackawanna</option>
-                        <option value="Lancaster">Lancaster</option>
-                        <option value="Lawrence">Lawrence</option>
-                        <option value="Lebanon">Lebanon</option>
-                        <option value="Lehigh">Lehigh</option>
-                        <option value="Luzerne">Luzerne</option>
-                        <option value="Lycoming">Lycoming</option>
-                        <option value="McKean">McKean</option>
-                        <option value="Mercer">Mercer</option>
-                        <option value="Mifflin">Mifflin</option>
-                        <option value="Monroe">Monroe</option>
-                        <option value="Montgomery">Montgomery</option>
-                        <option value="Montour">Montour</option>
-                        <option value="Northampton">Northampton</option>
-                        <option value="Northumberland">Northumberland</option>
-                        <option value="Perry">Perry</option>
-                        <option value="Philadelphia">Philadelphia</option>
-                        <option value="Pike">Pike</option>
-                        <option value="Potter">Potter</option>
-                        <option value="Shuylkill">Shuylkill</option>
-                        <option value="Snyder">Snyder</option>
-                        <option value="Somerset">Somerset</option>
-                        <option value="Sullivan">Sullivan</option>
-                        <option value="Susquehanna">Susquehanna</option>
-                        <option value="Tioga">Tioga</option>
-                        <option value="Union">Union</option>
-                        <option value="Venango">Venango</option>
-                        <option value="Warren">Warren</option>
-                        <option value="Washington">Washington</option>
-                        <option value="Wayne">Wayne</option>
-                        <option value="Westmoreland">Westmoreland</option>
-                        <option value="Wyoming">Wyoming</option>
-                        <option value="York">York</option>
+                    <select id="county" name="county" class="field required" maxlength="50">
+                        <option disabled {% if not userinfo.county %}selected{% endif %} value>Select an option</option>
+                        <option {% if userinfo.county == 'Non-PA Resident' %}selected{% endif %} value="Non-PA Resident">Non-PA Resident</option>
+                        <option {% if userinfo.county == 'Adams' %}selected{% endif %} value="Adams">Adams</option>
+                        <option {% if userinfo.county == 'Allegheny' %}selected{% endif %} value="Allegheny">Allegheny</option>
+                        <option {% if userinfo.county == 'Armstrong' %}selected{% endif %} value="Armstrong">Armstrong</option>
+                        <option {% if userinfo.county == 'Beaver' %}selected{% endif %} value="Beaver">Beaver</option>
+                        <option {% if userinfo.county == 'Bedford' %}selected{% endif %} value="Bedford">Bedford</option>
+                        <option {% if userinfo.county == 'Berks' %}selected{% endif %} value="Berks">Berks</option>
+                        <option {% if userinfo.county == 'Blair' %}selected{% endif %} value="Blair">Blair</option>
+                        <option {% if userinfo.county == 'Bradford' %}selected{% endif %} value="Bradford">Bradford</option>
+                        <option {% if userinfo.county == 'Bucks' %}selected{% endif %} value="Bucks">Bucks</option>
+                        <option {% if userinfo.county == 'Butler' %}selected{% endif %} value="Butler">Butler</option>
+                        <option {% if userinfo.county == 'Cambria' %}selected{% endif %} value="Cambria">Cambria</option>
+                        <option {% if userinfo.county == 'Cameron' %}selected{% endif %} value="Cameron">Cameron</option>
+                        <option {% if userinfo.county == 'Carbon' %}selected{% endif %} value="Carbon">Carbon</option>
+                        <option {% if userinfo.county == 'Centre' %}selected{% endif %} value="Centre">Centre</option>
+                        <option {% if userinfo.county == 'Chester' %}selected{% endif %} value="Chester">Chester</option>
+                        <option {% if userinfo.county == 'Clarion' %}selected{% endif %} value="Clarion">Clarion</option>
+                        <option {% if userinfo.county == 'Clearfield' %}selected{% endif %} value="Clearfield">Clearfield</option>
+                        <option {% if userinfo.county == 'Clinton' %}selected{% endif %} value="Clinton">Clinton</option>
+                        <option {% if userinfo.county == 'Columbia' %}selected{% endif %} value="Columbia">Columbia</option>
+                        <option {% if userinfo.county == 'Crawford' %}selected{% endif %} value="Crawford">Crawford</option>
+                        <option {% if userinfo.county == 'Cumberland' %}selected{% endif %} value="Cumberland">Cumberland</option>
+                        <option {% if userinfo.county == 'Dauphin' %}selected{% endif %} value="Dauphin">Dauphin</option>
+                        <option {% if userinfo.county == 'Delaware' %}selected{% endif %} value="Delaware">Delaware</option>
+                        <option {% if userinfo.county == 'Elk' %}selected{% endif %} value="Elk">Elk</option>
+                        <option {% if userinfo.county == 'Erie' %}selected{% endif %} value="Erie">Erie</option>
+                        <option {% if userinfo.county == 'Fayette' %}selected{% endif %} value="Fayette">Fayette</option>
+                        <option {% if userinfo.county == 'Forest' %}selected{% endif %} value="Forest">Forest</option>
+                        <option {% if userinfo.county == 'Franklin' %}selected{% endif %} value="Franklin">Franklin</option>
+                        <option {% if userinfo.county == 'Fulton' %}selected{% endif %} value="Fulton">Fulton</option>
+                        <option {% if userinfo.county == 'Greene' %}selected{% endif %} value="Greene">Greene</option>
+                        <option {% if userinfo.county == 'Huntingdon' %}selected{% endif %} value="Huntingdon">Huntingdon</option>
+                        <option {% if userinfo.county == 'Indiana' %}selected{% endif %} value="Indiana">Indiana</option>
+                        <option {% if userinfo.county == 'Jefferson' %}selected{% endif %} value="Jefferson">Jefferson</option>
+                        <option {% if userinfo.county == 'Juniata' %}selected{% endif %} value="Juniata">Juniata</option>
+                        <option {% if userinfo.county == 'Lackawanna' %}selected{% endif %} value="Lackawanna">Lackawanna</option>
+                        <option {% if userinfo.county == 'Lancaster' %}selected{% endif %} value="Lancaster">Lancaster</option>
+                        <option {% if userinfo.county == 'Lawrence' %}selected{% endif %} value="Lawrence">Lawrence</option>
+                        <option {% if userinfo.county == 'Lebanon' %}selected{% endif %} value="Lebanon">Lebanon</option>
+                        <option {% if userinfo.county == 'Lehigh' %}selected{% endif %} value="Lehigh">Lehigh</option>
+                        <option {% if userinfo.county == 'Luzerne' %}selected{% endif %} value="Luzerne">Luzerne</option>
+                        <option {% if userinfo.county == 'Lycoming' %}selected{% endif %} value="Lycoming">Lycoming</option>
+                        <option {% if userinfo.county == 'McKean' %}selected{% endif %} value="McKean">McKean</option>
+                        <option {% if userinfo.county == 'Mercer' %}selected{% endif %} value="Mercer">Mercer</option>
+                        <option {% if userinfo.county == 'Mifflin' %}selected{% endif %} value="Mifflin">Mifflin</option>
+                        <option {% if userinfo.county == 'Monroe' %}selected{% endif %} value="Monroe">Monroe</option>
+                        <option {% if userinfo.county == 'Montgomery' %}selected{% endif %} value="Montgomery">Montgomery</option>
+                        <option {% if userinfo.county == 'Montour' %}selected{% endif %} value="Montour">Montour</option>
+                        <option {% if userinfo.county == 'Northampton' %}selected{% endif %} value="Northampton">Northampton</option>
+                        <option {% if userinfo.county == 'Northumberland' %}selected{% endif %} value="Northumberland">Northumberland</option>
+                        <option {% if userinfo.county == 'Perry' %}selected{% endif %} value="Perry">Perry</option>
+                        <option {% if userinfo.county == 'Philadelphia' %}selected{% endif %} value="Philadelphia">Philadelphia</option>
+                        <option {% if userinfo.county == 'Pike' %}selected{% endif %} value="Pike">Pike</option>
+                        <option {% if userinfo.county == 'Potter' %}selected{% endif %} value="Potter">Potter</option>
+                        <option {% if userinfo.county == 'Shuylkill' %}selected{% endif %} value="Shuylkill">Shuylkill</option>
+                        <option {% if userinfo.county == 'Snyder' %}selected{% endif %} value="Snyder">Snyder</option>
+                        <option {% if userinfo.county == 'Somerset' %}selected{% endif %} value="Somerset">Somerset</option>
+                        <option {% if userinfo.county == 'Sullivan' %}selected{% endif %} value="Sullivan">Sullivan</option>
+                        <option {% if userinfo.county == 'Susquehanna' %}selected{% endif %} value="Susquehanna">Susquehanna</option>
+                        <option {% if userinfo.county == 'Tioga' %}selected{% endif %} value="Tioga">Tioga</option>
+                        <option {% if userinfo.county == 'Union' %}selected{% endif %} value="Union">Union</option>
+                        <option {% if userinfo.county == 'Venango' %}selected{% endif %} value="Venango">Venango</option>
+                        <option {% if userinfo.county == 'Warren' %}selected{% endif %} value="Warren">Warren</option>
+                        <option {% if userinfo.county == 'Washington' %}selected{% endif %} value="Washington">Washington</option>
+                        <option {% if userinfo.county == 'Wayne' %}selected{% endif %} value="Wayne">Wayne</option>
+                        <option {% if userinfo.county == 'Westmoreland' %}selected{% endif %} value="Westmoreland">Westmoreland</option>
+                        <option {% if userinfo.county == 'Wyoming' %}selected{% endif %} value="Wyoming">Wyoming</option>
+                        <option {% if userinfo.county == 'York' %}selected{% endif %} value="York">York</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td class="fname">{% trans "Contest division" %} *</td>
                 <td>
-                    <select name="contest_division" class="field required">
-                        <option disabled selected value>Select an option</option>
-                        <option value="YOUTH">{% trans "Youth (Age 13 through Grade 12)" %}</option>
-                        <option value="ACADM">{% trans "Higher Ed (Undergraduate, Graduate, Professional)" %}</option>
-                        <option value="ADULT">{% trans "Adult (Non-student)" %}</option>
+                    <select id="contest_division" name="contest_division" class="field required">
+                        <option disabled {% if not userinfo.division %}selected{% endif %} value>Select an option</option>
+                        <option {% if userinfo.division == 'YOUTH' %}selected{% endif %} value="YOUTH">{% trans "Youth (Age 13 through Grade 12)" %}</option>
+                        <option {% if userinfo.division == 'ACADM' %}selected{% endif %} value="ACADM">{% trans "Higher Ed (Undergraduate, Graduate, Professional)" %}</option>
+                        <option {% if userinfo.division == 'ADULT' %}selected{% endif %} value="ADULT">{% trans "Adult (Non-student)" %}</option>
                     </select>
                 </td>
             </tr>

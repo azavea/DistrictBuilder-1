@@ -118,6 +118,9 @@ def userregister(request):
     lname = request.POST.get('lastname', None)
     hint = request.POST.get('passwordhint', None)
     org = request.POST.get('organization', None)
+    division = request.POST.get('division', None)
+    county = request.POST.get('county', None)
+
     status = {'success': False}
     if username != '' and password != '':
         if (username == 'anonymous' and password == 'anonymous'):
@@ -144,6 +147,8 @@ def userregister(request):
 
             profile = user.profile
             profile.organization = org
+            profile.county = county
+            profile.contest_division = division
             profile.pass_hint = hint
             profile.save()
 
@@ -179,6 +184,8 @@ def userupdate(request):
     lname = request.POST.get('lastname', None)
     hint = request.POST.get('passwordhint', None)
     org = request.POST.get('organization', None)
+    division = request.POST.get('division', None)
+    county = request.POST.get('county', None)
     id = request.POST.get('userid', None)
 
     status = {'success': False, 'message': 'Unspecified error.'}
@@ -203,6 +210,8 @@ def userupdate(request):
                 profile = user.profile
                 profile.pass_hint = hint
                 profile.organization = org
+                profile.county = county
+                profile.contest_division = division
                 profile.save()
 
                 status['success'] = True
