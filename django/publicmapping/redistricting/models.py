@@ -1666,8 +1666,7 @@ class Plan(models.Model):
             # This is desired, and will keep any harmful array values out of the query.
             qset = qset.filter(
                 district_id__in=[int(id) for id in district_ids])
-            exclude_unassigned = len(
-                filter(lambda x: int(x) == 0, district_ids)) == 0
+            exclude_unassigned = all(int(x) != 0 for x in district_ids)
 
         # Don't return Unassigned district unless it was explicitly requested
         if exclude_unassigned:
@@ -3475,6 +3474,21 @@ class Profile(models.Model):
     # A user's password hint.
     pass_hint = models.CharField(max_length=256)
 
+    # A user's county
+    county = models.CharField(max_length=50, blank=False, null=True)
+
+    # A user's contest division
+    contest_division = models.CharField(
+        choices=(
+            ('ADULT', 'Adult (non-student)'),
+            ('YOUTH', 'Youth (Age 13 through Grade 12)'),
+            ('ACADM', 'Higher Ed (Undergraduate, graduate, professional'),
+        ),
+        max_length=5,
+        blank=False,
+        null=True
+    )
+
     def __unicode__(self):
         """
         Represent the Profile as a unicode string. This is the a string
@@ -3827,14 +3841,13 @@ class ScoreFunction(BaseModel):
 
                     # If this is a plan score and the argument is a
                     # district score, extract the districts from the
-                    # plan, score each individually, # and pass into the
+                    # plan, score each individually, and pass into the
                     # score function as a list
-                    if not (self.is_planscore and not score_fn.is_planscore):
-                        calc.arg_dict[arg.argument] = ('literal',
-                                                       score_fn.score(
-                                                           dp,
-                                                           format=format,
-                                                           version=version))
+                    if not self.is_planscore or score_fn.is_planscore:
+                        calc.arg_dict[arg.argument] = (
+                            'literal',
+                            score_fn.score(dp, format=format, version=version)
+                        )
                     else:
                         version = dp.version if version is None else version
                         for d in dp.get_districts_at_version(version):
@@ -4420,15 +4433,19 @@ class ComputedDistrictScore(models.Model):
             logger.debug('Reason:', ex)
             return None
 
-        if created == True:
+        try:
+            # Since we create the object blank, it's possible to hit a race condition where
+            # the object already existed, but has no value saved. Try to load the value,
+            # and if it fails then calculate it.
+            score = cPickle.loads(str(cache.value))
+        except Exception:
+            # The object didn't have an already cached value, so calculate it
             score = function.score(district, format='raw')
-            cache.value = cPickle.dumps(score)
-            cache.save()
-        else:
-            try:
-                score = cPickle.loads(str(cache.value))
-            except:
-                score = function.score(district, format='raw')
+            # To avoid having multiple processes hitting the database with the same write,
+            # only update the object if we were the one that created it initially
+            if created:
+                cache.value = cPickle.dumps(score)
+                cache.save()
 
         if format != 'raw':
             calc = function.get_calculator()
@@ -4505,16 +4522,17 @@ class ComputedPlanScore(models.Model):
                 plan.id)
             return None
 
-        if created:
+        try:
+            # Since we create the object blank, it's possible to hit a race condition where
+            # the object already existed, but has no value saved. Try to load the value,
+            # and if it fails then calculate it.
+            score = cPickle.loads(str(cache.value))
+        except Exception:
+            # The object didn't have an already cached value, so calculate it
             score = function.score(plan, format='raw', version=plan_version)
-            cache.value = cPickle.dumps(score)
-            cache.save()
-        else:
-            try:
-                score = cPickle.loads(str(cache.value))
-            except:
-                score = function.score(
-                    plan, format='raw', version=plan_version)
+            # To avoid having multiple processes hitting the database with the same write,
+            # only update the object if we were the one that created it initially
+            if created:
                 cache.value = cPickle.dumps(score)
                 cache.save()
 

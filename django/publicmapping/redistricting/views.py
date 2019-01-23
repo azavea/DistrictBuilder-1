@@ -414,7 +414,9 @@ def get_user_info(user):
         'password_hint': profile.pass_hint,
         'firstname': user.first_name,
         'lastname': user.last_name,
-        'organization': profile.organization,
+        'organization': profile.organization or '',
+        'county': profile.county or '',
+        'division': profile.contest_division or '',
         'id': user.id
     }
 

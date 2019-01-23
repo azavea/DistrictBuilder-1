@@ -28,7 +28,6 @@ from django.core.mail import send_mail
 from django.contrib.sessions.models import Session
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, AnonymousUser
-from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import Site
 from django.db import transaction
@@ -36,15 +35,12 @@ from django.views.decorators.cache import cache_control
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
-from django.template import loader, RequestContext
+from django.template import loader
 from hashlib import sha1
 from django.utils.translation import ugettext as _, get_language
 import json
 
 # for proxy
-import cgi
-import os
-import sys
 import urllib2
 
 # for password reminders
@@ -122,7 +118,9 @@ def userregister(request):
     lname = request.POST.get('lastname', None)
     hint = request.POST.get('passwordhint', None)
     org = request.POST.get('organization', None)
-    anonymous = False
+    division = request.POST.get('division', None)
+    county = request.POST.get('county', None)
+
     status = {'success': False}
     if username != '' and password != '':
         if (username == 'anonymous' and password == 'anonymous'):
@@ -135,7 +133,7 @@ def userregister(request):
 
             try:
                 User.objects.create_user(username, email, password)
-            except Exception as error:
+            except Exception:
                 status[
                     'message'] = 'Sorry, we weren\'t able to create your account.'
                 return HttpResponse(json.dumps(status))
@@ -149,6 +147,8 @@ def userregister(request):
 
             profile = user.profile
             profile.organization = org
+            profile.county = county
+            profile.contest_division = division
             profile.pass_hint = hint
             profile.save()
 
@@ -184,6 +184,8 @@ def userupdate(request):
     lname = request.POST.get('lastname', None)
     hint = request.POST.get('passwordhint', None)
     org = request.POST.get('organization', None)
+    division = request.POST.get('division', None)
+    county = request.POST.get('county', None)
     id = request.POST.get('userid', None)
 
     status = {'success': False, 'message': 'Unspecified error.'}
@@ -208,11 +210,13 @@ def userupdate(request):
                 profile = user.profile
                 profile.pass_hint = hint
                 profile.organization = org
+                profile.county = county
+                profile.contest_division = division
                 profile.save()
 
                 status['success'] = True
                 status['message'] = 'Information updated.'
-        except:
+        except Exception:
             status['message'] = 'No user for that account.'
 
     return HttpResponse(json.dumps(status))
@@ -271,7 +275,7 @@ def emailpassword(user):
         s.update(newpw)
         user.set_password(s.hexdigest())
         user.save()
-    except:
+    except Exception:
         return False
 
     send_mail(
@@ -416,7 +420,7 @@ def session(request):
 
     try:
         user = User.objects.get(username=user)
-    except:
+    except Exception:
         status['message'] = 'No user found.'
         return HttpResponse(json.dumps(status))
 
