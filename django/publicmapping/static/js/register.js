@@ -55,6 +55,23 @@ $(function(){
         });
     };
 
+    howhearInitVal = $("#how_did_you_hear option:selected").val();
+    if (howhearInitVal == "ANOTH" || howhearInitVal == "OTHER") {
+        $("#where_did_you_hear_tr").show();
+        $("#where_did_you_hear").addClass("required");
+    }
+
+    $("#how_did_you_hear").change(function() {
+        var thisVal = $("#how_did_you_hear option:selected").val();
+        if (thisVal == "ANOTH" || thisVal == "OTHER") {
+            $("#where_did_you_hear_tr").show();
+            $("#where_did_you_hear").addClass("required");
+        } else {
+            $("#where_did_you_hear_tr").hide();
+            $("#where_did_you_hear").removeClass("required");
+        }
+    });
+
     // when the register form is submitted, do some client side validation
     // first, before sending it up to the server
     $('#doRegister').click(function(evt) {
@@ -68,6 +85,8 @@ $(function(){
             email = frm.find('#email'),
             agree = frm.find('#agree'),
             userid = frm.find('#userid');
+            howhear = $("#how_did_you_hear option:selected").val();
+            wherehear = $("#where_did_you_hear").val();
 
         var validateUsername = function(name) {
             if ($.trim(name) === '' ||
@@ -148,6 +167,10 @@ $(function(){
             return false;
         }
 
+        if (howhear != 'ANOTH' && howhear != 'OTHER') {
+            wherehear = '';
+        }
+
         jQuery.ajax({
             context:frm[0],
             data: {
@@ -162,6 +185,8 @@ $(function(){
                 organization:$('#organization').val(),
                 county:$("#county option:selected").val(),
                 division:$("#contest_division option:selected").val(),
+                howhear:howhear,
+                wherehear:wherehear,
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             dataType:'json',

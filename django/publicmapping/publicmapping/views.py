@@ -120,6 +120,8 @@ def userregister(request):
     org = request.POST.get('organization', None)
     division = request.POST.get('division', None)
     county = request.POST.get('county', None)
+    howhear = request.POST.get('howhear', None)
+    wherehear = request.POST.get('wherehear', None)
 
     status = {'success': False}
     if username != '' and password != '':
@@ -150,6 +152,8 @@ def userregister(request):
             profile.county = county
             profile.contest_division = division
             profile.pass_hint = hint
+            profile.how_did_you_hear = howhear
+            profile.where_did_you_hear = wherehear
             profile.save()
 
             login(request, user)
@@ -186,6 +190,8 @@ def userupdate(request):
     org = request.POST.get('organization', None)
     division = request.POST.get('division', None)
     county = request.POST.get('county', None)
+    howhear = request.POST.get('howhear', None)
+    wherehear = request.POST.get('wherehear', None)
     id = request.POST.get('userid', None)
 
     status = {'success': False, 'message': 'Unspecified error.'}
@@ -212,6 +218,8 @@ def userupdate(request):
                 profile.organization = org
                 profile.county = county
                 profile.contest_division = division
+                profile.how_did_you_hear = howhear
+                profile.where_did_you_hear = wherehear
                 profile.save()
 
                 status['success'] = True
