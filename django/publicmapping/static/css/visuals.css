@@ -555,3 +555,11 @@ background: #EFD695
 #where_did_you_hear_tr {
   display: none;
 }
+
+#socialmedia_textarea {
+  padding: 0 0 0 8px;
+  width: 230px;
+  border: 1px solid #ccc;
+  margin: 0 0 10px 15px;
+  border-radius: 0;
+}

@@ -181,6 +181,10 @@
                         {% endif %}/>
                 </td>
             </tr>
+            <tr>
+                <td class="fname">Social Media Handle(s)</td>
+                <td><textarea id="socialmedia_textarea" name="social_media" class="field" rows="3" type="text" maxlength="500">{% if is_registered %}{{ userinfo.social_media }}{% endif %}</textarea></td>
+            </tr>
             {% if not is_registered %}
             <tr id="agreerow">
                 <td></td>
