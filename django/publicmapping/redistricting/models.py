@@ -3510,6 +3510,8 @@ class Profile(models.Model):
     # A user's answer for "Where?" if "OTHER" or 'ANOTH' is selected
     # for `how_did_you_hear` above
     where_did_you_hear = models.CharField(max_length=30, null=True)
+    # A user's social media handles
+    social_media = models.CharField(max_length=500, null=True)
 
     def __unicode__(self):
         """

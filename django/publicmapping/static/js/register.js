@@ -187,6 +187,7 @@ $(function(){
                 division:$("#contest_division option:selected").val(),
                 howhear:howhear,
                 wherehear:wherehear,
+                socialmedia:$('#socialmedia_textarea').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             dataType:'json',
