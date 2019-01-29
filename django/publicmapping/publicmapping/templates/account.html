@@ -155,6 +155,36 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td class="fname">How did you hear<br>about DTL? *</td>
+                <td>
+                    <select id="how_did_you_hear" name="how_did_you_hear" class="field required">
+                        <option disabled {% if not userinfo.how_did_you_hear %}selected{% endif %} value>Select an option</option>
+                        <option {% if userinfo.how_did_you_hear == 'TEACH' %}selected{% endif %} value="TEACH">Teacher</option>
+                        <option {% if userinfo.how_did_you_hear == 'FRIEN' %}selected{% endif %} value="FRIEN">Friend, Colleague</option>
+                        <option {% if userinfo.how_did_you_hear == 'WEB_S' %}selected{% endif %} value="WEB_S">Web search</option>
+                        <option {% if userinfo.how_did_you_hear == 'SO_ME' %}selected{% endif %} value="SO_ME">Social media</option>
+                        <option {% if userinfo.how_did_you_hear == 'DTL_E' %}selected{% endif %} value="DTL_E">Draw the Lines event</option>
+                        <option {% if userinfo.how_did_you_hear == 'MEDIA' %}selected{% endif %} value="MEDIA">Media coverage</option>
+                        <option {% if userinfo.how_did_you_hear == 'EL_OF' %}selected{% endif %} value="EL_OF">Elected official</option>
+                        <option {% if userinfo.how_did_you_hear == 'ANOTH' %}selected{% endif %} value="ANOTH">Another organization</option>
+                        <option {% if userinfo.how_did_you_hear == 'OTHER' %}selected{% endif %} value="OTHER">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="where_did_you_hear_tr">
+                <td class="fname">Where? *</td>
+                <td>
+                    <input id="where_did_you_hear" name="where_did_you_hear" class="field" maxlength="30"
+                        {% if is_registered %}
+                            value="{{ userinfo.where_did_you_hear }}"
+                        {% endif %}/>
+                </td>
+            </tr>
+            <tr>
+                <td class="fname">Social Media Handle(s)</td>
+                <td><textarea id="socialmedia_textarea" name="social_media" class="field" rows="3" type="text" maxlength="500">{% if is_registered %}{{ userinfo.social_media }}{% endif %}</textarea></td>
+            </tr>
             {% if not is_registered %}
             <tr id="agreerow">
                 <td></td>

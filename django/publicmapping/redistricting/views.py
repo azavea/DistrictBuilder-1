@@ -417,6 +417,9 @@ def get_user_info(user):
         'organization': profile.organization or '',
         'county': profile.county or '',
         'division': profile.contest_division or '',
+        'how_did_you_hear': profile.how_did_you_hear or '',
+        'where_did_you_hear': profile.where_did_you_hear,
+        'social_media': profile.social_media,
         'id': user.id
     }
 

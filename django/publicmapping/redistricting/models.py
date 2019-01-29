@@ -3489,6 +3489,30 @@ class Profile(models.Model):
         null=True
     )
 
+    # A user's selection for "How did you hear about DTL?"
+    how_did_you_hear = models.CharField(
+        choices=(
+            ('TEACH', 'Teacher'),
+            ('FRIEN', 'Friend, Colleague'),
+            ('WEB_S', 'Web search'),
+            ('SO_ME', 'Social media'),
+            ('DTL_E', 'Draw the Lines event'),
+            ('MEDIA', 'Media coverage'),
+            ('EL_OF', 'Elected official'),
+            ('ANOTH', 'Another organization'),
+            ('OTHER', 'Other'),
+        ),
+        max_length=5,
+        blank=False,
+        null=True
+    )
+
+    # A user's answer for "Where?" if "OTHER" or 'ANOTH' is selected
+    # for `how_did_you_hear` above
+    where_did_you_hear = models.CharField(max_length=30, null=True)
+    # A user's social media handles
+    social_media = models.CharField(max_length=500, null=True)
+
     def __unicode__(self):
         """
         Represent the Profile as a unicode string. This is the a string
