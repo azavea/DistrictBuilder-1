@@ -2483,7 +2483,7 @@ function mapinit(srs,maxExtent) {
                 { id:2, name:'District 2', color: '#808000'},
                 { id:3, name:'District 3', color: '#aaffc3'},
                 { id:4, name:'District 4', color: '#800000'},
-                { id:5, name:'District 5', color: '#fffac8'},
+                { id:5, name:'District 5', color: '#e6194b'},
                 { id:6, name:'District 6', color: '#aa6e28'},
                 { id:7, name:'District 7', color: '#e6beff'},
                 { id:8, name:'District 8', color: '#008080'},
@@ -2496,7 +2496,7 @@ function mapinit(srs,maxExtent) {
                 { id:15, name:'District 15', color: '#0082c8'},
                 { id:16, name:'District 16', color: '#ffe119'},
                 { id:17, name:'District 17', color: '#3cb44b'},
-                { id:18, name:'District 18', color: '#e6194b'},
+                { id:18, name:'District 18', color: '#fffac8'},
             ];
 
             return districts.map(function(d) {
