@@ -616,7 +616,7 @@ function mapinit(srs,maxExtent) {
         strokeWidth: 2,
         label: '${label}',
         fontColor: '#663300',
-        fontSize: '13pt',
+        fontSize: '12pt',
         fontFamily: 'Arial,Helvetica,sans-serif',
         fontWeight: '800',
         labelAlign: 'cm',
