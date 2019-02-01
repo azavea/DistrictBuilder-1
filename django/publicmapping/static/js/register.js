@@ -20,7 +20,7 @@
        This script file defines the behaviors and components used for
        the user registration and login process.
 
-   Author: 
+   Author:
         Andrew Jennings, David Zwarg
 */
 
@@ -50,10 +50,27 @@ $(function(){
         $('<div class="error">').text(gettext("Sorry, registration is not available at this time.  Please try logging in anonymously or coming back later")).dialog({
             modal: true,
             title: gettext("Signup Unavailable"),
-            resizable:false, 
+            resizable:false,
             width:300
         });
     };
+
+    howhearInitVal = $("#how_did_you_hear option:selected").val();
+    if (howhearInitVal == "ANOTH" || howhearInitVal == "OTHER") {
+        $("#where_did_you_hear_tr").show();
+        $("#where_did_you_hear").addClass("required");
+    }
+
+    $("#how_did_you_hear").change(function() {
+        var thisVal = $("#how_did_you_hear option:selected").val();
+        if (thisVal == "ANOTH" || thisVal == "OTHER") {
+            $("#where_did_you_hear_tr").show();
+            $("#where_did_you_hear").addClass("required");
+        } else {
+            $("#where_did_you_hear_tr").hide();
+            $("#where_did_you_hear").removeClass("required");
+        }
+    });
 
     // when the register form is submitted, do some client side validation
     // first, before sending it up to the server
@@ -68,6 +85,8 @@ $(function(){
             email = frm.find('#email'),
             agree = frm.find('#agree'),
             userid = frm.find('#userid');
+            howhear = $("#how_did_you_hear option:selected").val();
+            wherehear = $("#where_did_you_hear").val();
 
         var validateUsername = function(name) {
             if ($.trim(name) === '' ||
@@ -82,27 +101,39 @@ $(function(){
         };
 
         if (!validateUsername(username.val())) {
-            username.removeClass('field');
             username.addClass('error');
             return false;
         }
         else {
             username.removeClass('error');
-            username.addClass('field');
         }
 
         if (newpasswordfield1.val() != newpasswordfield2.val()) {
-            newpasswordfield1.removeClass('field');
             newpasswordfield1.addClass('error');
-            newpasswordfield2.removeClass('field');
             newpasswordfield2.addClass('error');
             return false;
         }
         else {
             newpasswordfield1.removeClass('error');
-            newpasswordfield1.addClass('field');
             newpasswordfield2.removeClass('error');
-            newpasswordfield2.addClass('field');
+        }
+
+        // Check all required fields
+        var failedVerification = false;
+        frm.find(".field.required").each(function(i, node) {
+            var obj = $(node);
+            var val = obj.val();
+
+            if (!val) {
+                failedVerification = true;
+                obj.addClass("error");
+            } else {
+                obj.removeClass("error");
+            }
+        });
+
+        if (failedVerification) {
+            return false;
         }
 
         if ( username.attr('disabled') == null || newpasswordfield1.val() != '') {
@@ -123,22 +154,11 @@ $(function(){
             newpassword2 = Sha1.hash(newpasswordfield2.val());
         }
 
-        if (passwordhint.val() == '') {
-            passwordhint.removeClass('field');
-            passwordhint.addClass('error');
-            return false;
-        }
-        else {
-            passwordhint.addClass('field');
-            passwordhint.removeClass('error');
-        }
         if (!(email.val().match(/^([\w\-\.\+])+\@([\w\-\.])+\.([A-Za-z]{2,4})$/))) {
-            email.removeClass('field');
             email.addClass('error');
             return false;
         }
         else {
-            email.addClass('field');
             email.removeClass('error');
         }
 
@@ -147,9 +167,13 @@ $(function(){
             return false;
         }
 
+        if (howhear != 'ANOTH' && howhear != 'OTHER') {
+            wherehear = '';
+        }
+
         jQuery.ajax({
             context:frm[0],
-            data: { 
+            data: {
                 userid:$('#userid').val(),
                 newusername:username.val(),
                 newpassword1:newpassword1,
@@ -159,6 +183,11 @@ $(function(){
                 firstname:$('#firstname').val(),
                 lastname:$('#lastname').val(),
                 organization:$('#organization').val(),
+                county:$("#county option:selected").val(),
+                division:$("#contest_division option:selected").val(),
+                howhear:howhear,
+                wherehear:wherehear,
+                socialmedia:$('#socialmedia_textarea').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             dataType:'json',
@@ -186,19 +215,17 @@ $(function(){
                         });
                     } else if (data.message == 'name exists') {
                         var newusername = $('#newusername');
-                        newusername.removeClass('field');
                         newusername.addClass('error');
                         $('<div />').text(gettext("User Name already exists. Please choose another one.")).dialog({
                             modal: true, autoOpen: true, title: gettext('Error'), resizable:false
-                        });                
+                        });
                     } else if (data.message == 'email exists') {
                         var email = $('#email');
-                        email.removeClass('field');
                         email.addClass('error');
                         $('#dupemail').css('display','block');
                         $('<div />').text(gettext("Email already exists. Enter another one, or use the password retrieval form")).dialog({
                             modal: true, autoOpen: true, title: gettext('Error'), resizable:false
-                        });                
+                        });
                     } else {
                         genericRegistrationError();
                     }
@@ -320,7 +347,7 @@ $(function(){
                 resetBtn.html('<span class="ui-button-text">'+btnText+'</span>');
                 resetBtn.attr('disabled',true);
             },
-            complete:function(xhr,textStatus){                
+            complete:function(xhr,textStatus){
                 $('#forgotusername').val('');
                 $('#forgotemail').val('');
             }

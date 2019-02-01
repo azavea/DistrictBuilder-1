@@ -255,6 +255,7 @@ div#logoffdlg {
     font-weight: bold;
 }
 form#registerForm input.field, form#registerForm input.error,
+form#registerForm select.field, form#forgotForm select.input,
 form#forgotForm input.field, form#forgotForm input.error {
     padding: 0 0 0 8px;
     width: 230px;
@@ -271,7 +272,8 @@ form#forgotForm input.field, form#forgotForm input.error {
     -webkit-border-radius: 8px;
     border-radius: 8px;
 }
-form#registerForm input.error, form#forgotForm input.error, #districtComment input.error {
+form#registerForm input.error, form#registerForm select.error,
+form#forgotForm input.error, #districtComment input.error {
     border: solid 1px #ff0000;
 }
 table#registerTable {
@@ -548,4 +550,16 @@ background: #EFD695
 
 .hiddenelem {
   display: none;
+}
+
+#where_did_you_hear_tr {
+  display: none;
+}
+
+#socialmedia_textarea {
+  padding: 0 0 0 8px;
+  width: 230px;
+  border: 1px solid #ccc;
+  margin: 0 0 10px 15px;
+  border-radius: 0;
 }

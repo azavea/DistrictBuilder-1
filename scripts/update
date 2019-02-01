@@ -79,7 +79,7 @@ then
         write_settings
         docker-compose up -d "${MIGRATION_CONTAINERS[@]}"
         run_migrations
-#        reconfigure
+        reconfigure
         make_translations
         change_geoserver_admin_password
     fi

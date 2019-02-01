@@ -414,7 +414,12 @@ def get_user_info(user):
         'password_hint': profile.pass_hint,
         'firstname': user.first_name,
         'lastname': user.last_name,
-        'organization': profile.organization,
+        'organization': profile.organization or '',
+        'county': profile.county or '',
+        'division': profile.contest_division or '',
+        'how_did_you_hear': profile.how_did_you_hear or '',
+        'where_did_you_hear': profile.where_did_you_hear,
+        'social_media': profile.social_media,
         'id': user.id
     }
 
@@ -551,8 +556,7 @@ def commonplan(request, planid):
     long_label = body_member_long_label.strip().lower()
 
     has_regions = Region.objects.all().count() > 1
-    bodies = LegislativeBody.objects.all().order_by('region__sort_key',
-                                                    'sort_key')
+    bodies = LegislativeBody.objects.all().order_by('max_districts')
     l_bodies = [
         b for b in bodies
         if b in [
