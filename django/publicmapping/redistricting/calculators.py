@@ -1708,6 +1708,74 @@ class Competitiveness(CalculatorBase):
             pass
 
 
+class CompetitivenessSimple(CalculatorBase):
+    """
+    Compute the plan's Competitiveness using a simpler metric.
+
+    Competitiveness is defined as the difference between the percentages of
+    Democrats and Republicans as being less than or equal to 10%.
+
+    This calculator only operates on Plans.
+
+    This calculator requires three arguments: 'democratic', 'republican',
+    'vap', and has one optional argument: 'target'.
+
+    If 'target' is set, the calculator will format the result to include
+        the target value in parenthesis after the calculated value.
+    """
+
+    def compute(self, **kwargs):
+        """
+        Compute the competitiveness.
+
+        @keyword plan: A L{Plan} whose set of districts should be
+            evaluated for competitiveness.
+        @keyword version: Optional. The version of the plan, defaults to
+            the most recent version.
+        """
+        if not 'plan' in kwargs:
+            return
+
+        plan = kwargs['plan']
+        version = kwargs['version'] if 'version' in kwargs else plan.version
+        districts = plan.get_districts_at_version(version, include_geom=False)
+
+        fair = 0
+        for district in districts:
+            if district.district_id == 0:
+                continue
+
+            tmpdem = self.get_value('democratic', district)
+            tmprep = self.get_value('republican', district)
+            tmpvap = self.get_value('vap', district)
+
+            if tmpdem is None or tmprep is None:
+                continue
+
+            dem = float(tmpdem)
+            rep = float(tmprep)
+            vap = float(tmpvap)
+
+            if dem == 0.0 and rep == 0.0:
+                continue
+
+            if abs(dem / vap - rep / vap) <= 0.1:
+                fair += 1
+
+        self.result = {'value': fair}
+        try:
+            target = self.get_value('target')
+            if target != None:
+                self.result = {
+                    'value': _('%(value)d (of %(target)s)') % {
+                        'value': fair,
+                        'target': target
+                    }
+                }
+        except:
+            pass
+
+
 class CountDistricts(CalculatorBase):
     """
     Verify that the number of districts in a plan matches a target.
