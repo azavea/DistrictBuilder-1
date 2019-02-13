@@ -27,7 +27,7 @@ msgstr "District %(district_id)s"
 
 #: /projects/PublicMapping/DistrictBuilder/docs/config.xml:10
 msgid "congress long description"
-msgstr "Congressional"
+msgstr "18 district congressional map (contest closed)"
 
 #: /projects/PublicMapping/DistrictBuilder/docs/config.xml:10
 msgid "congress members"
@@ -602,10 +602,10 @@ msgstr "AllContiguous - Congress"
 #: /projects/PublicMapping/DistrictBuilder/docs/config.xml:973
 msgid "congress-contiguous long description"
 msgstr ""
-"<p>Your plan does not meet the competition criteria for "
-"Contiguity</p><p>Every part of a district must be reachable from every other"
-" part without crossing the district's borders. All districts within a plan "
-"must be contiguous."
+"<p>Your map does not meet the constitutional criteria for "
+"contiguity.</p><p>Each mapping unit must be connected to a district. No "
+"assigned unit can be disconnected from the rest of its district. All "
+"districts within a map must be contiguous."
 
 #: /projects/PublicMapping/DistrictBuilder/docs/config.xml:979
 msgid "congress-district-count short label"
@@ -2415,11 +2415,11 @@ msgstr ""
 
 #: /usr/src/app/config/config.xml:498
 msgid "panel_equivalence_all short label"
-msgstr "Equal Population"
+msgstr "Equivalence"
 
 #: /usr/src/app/config/config.xml:498
 msgid "panel_equivalence_all label"
-msgstr "Equal Population"
+msgstr "Equivalence"
 
 #: /usr/src/app/config/config.xml:498
 msgid "panel_equivalence_all long description"
@@ -2472,11 +2472,11 @@ msgstr ""
 
 #: /usr/src/app/config/config.xml:504
 msgid "panel_equivalence_mine short label"
-msgstr "Equal Population"
+msgstr "Equivalence"
 
 #: /usr/src/app/config/config.xml:504
 msgid "panel_equivalence_mine label"
-msgstr "Equal Population"
+msgstr "Equivalence"
 
 #: /usr/src/app/config/config.xml:504
 msgid "panel_equivalence_mine long description"
@@ -3582,4 +3582,769 @@ msgstr "Two or more races"
 
 #: /usr/src/app/config/config.xml:364
 msgid "district_two_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:6
+msgid "congress17 short label"
+msgstr "%(district_id)s"
+
+#: /usr/src/app/config/config.xml:6
+msgid "congress17 label"
+msgstr "District %(district_id)s"
+
+#: /usr/src/app/config/config.xml:6
+msgid "congress17 long description"
+msgstr "17 district congressional map"
+
+#: /usr/src/app/config/config.xml:6
+msgid "congress17 members"
+msgstr "Districts"
+
+#: /usr/src/app/config/config.xml:594
+msgid "E_congress_plan_polsbypopper short label"
+msgstr "Compactness"
+
+#: /usr/src/app/config/config.xml:594
+msgid "E_congress_plan_polsbypopper label"
+msgstr "Compactness"
+
+#: /usr/src/app/config/config.xml:594
+msgid "E_congress_plan_polsbypopper long description"
+msgstr ""
+"The competition is using the 'Polsby-Popper' compactness measure. This "
+"measure is a ratio of the area of a circle with the same perimeter as a "
+"district to the area of the district."
+
+#: /usr/src/app/config/config.xml:600
+msgid "F_congress_plan_equivalence short label"
+msgstr "Population Equivalence"
+
+#: /usr/src/app/config/config.xml:600
+msgid "F_congress_plan_equivalence label"
+msgstr "Population Equivalence"
+
+#: /usr/src/app/config/config.xml:600
+msgid "F_congress_plan_equivalence long description"
+msgstr ""
+"The Equipopulation score is the difference between the district with the "
+"highest population and the district with the lowest population."
+
+#: /usr/src/app/config/config.xml:494
+msgid "A_congress_plan_equipopulation_summary short label"
+msgstr "Target Population (705,688)"
+
+#: /usr/src/app/config/config.xml:494
+msgid "A_congress_plan_equipopulation_summary label"
+msgstr "Target Population (705,688)"
+
+#: /usr/src/app/config/config.xml:494
+msgid "A_congress_plan_equipopulation_summary long description"
+msgstr ""
+"The population of each Congressional district must be 705,688 +/- 0.5%."
+
+#: /usr/src/app/config/config.xml:107
+msgid "B_congress_plan_noncontiguous short label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:107
+msgid "B_congress_plan_noncontiguous label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:107
+msgid "B_congress_plan_noncontiguous long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:536
+msgid "C_congress_plan_competitiveness short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:536
+msgid "C_congress_plan_competitiveness label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:536
+msgid "C_congress_plan_competitiveness long description"
+msgstr ""
+"Each plan's overall political competitiveness is determined by averaging "
+"each district.s 'partisan differential'.  The partisan differential of each "
+"district is calculated by subtracting the Democratic 'partisan index' from "
+"the Republican 'partisan index'.<br/><br/>'Heavily' competitive districts "
+"are districts with partisan differentials of less than or equal to 5%. "
+"'Generally' competitive districts are districts with partisan differentials "
+"of greater than 5% but less than 10%."
+
+#: /usr/src/app/config/config.xml:569
+msgid "D_congress_plan_vapnownh_thresh short label"
+msgstr "Majority-Minority"
+
+#: /usr/src/app/config/config.xml:569
+msgid "D_congress_plan_vapnownh_thresh label"
+msgstr "Majority-Minority"
+
+#: /usr/src/app/config/config.xml:569
+msgid "D_congress_plan_vapnownh_thresh long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:190
+msgid "district_23_vapwnh_percent short label"
+msgstr "White VAP"
+
+#: /usr/src/app/config/config.xml:190
+msgid "district_23_vapwnh_percent label"
+msgstr "White VAP"
+
+#: /usr/src/app/config/config.xml:190
+msgid "district_23_vapwnh_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:988
+msgid "congress17_leader_all short label"
+msgstr "Congressional Leaderboard - All"
+
+#: /usr/src/app/config/config.xml:988
+msgid "congress17_leader_all label"
+msgstr "Congressional Leaderboard - All"
+
+#: /usr/src/app/config/config.xml:988
+msgid "congress17_leader_all long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:829
+msgid "panel_competitiveness_all_17 short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:829
+msgid "panel_competitiveness_all_17 label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:829
+msgid "panel_competitiveness_all_17 long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:562
+msgid "congress17_plan_competitiveness_leaderboard short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:562
+msgid "congress17_plan_competitiveness_leaderboard label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:562
+msgid "congress17_plan_competitiveness_leaderboard long description"
+msgstr ""
+"Each plan's overall political competitiveness is determined by finding the "
+"number of districts whose Democratic partisan index and Republican partisan "
+"index are within 10% of each other."
+
+#: /usr/src/app/config/config.xml:994
+msgid "congress17_leader_mine short label"
+msgstr "Congressional Leaderboard - Mine"
+
+#: /usr/src/app/config/config.xml:994
+msgid "congress17_leader_mine label"
+msgstr "Congressional Leaderboard - Mine"
+
+#: /usr/src/app/config/config.xml:994
+msgid "congress17_leader_mine long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:835
+msgid "panel_competitiveness_mine_17 short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:835
+msgid "panel_competitiveness_mine_17 label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:835
+msgid "panel_competitiveness_mine_17 long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:1001
+msgid "congress17_submission_summary short label"
+msgstr "Split Counties"
+
+#: /usr/src/app/config/config.xml:1001
+msgid "congress17_submission_summary label"
+msgstr "Split Counties"
+
+#: /usr/src/app/config/config.xml:1001
+msgid "congress17_submission_summary long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:890
+msgid "plan_submission_summary_17 short label"
+msgstr "Plan Summary"
+
+#: /usr/src/app/config/config.xml:890
+msgid "plan_submission_summary_17 label"
+msgstr "Plan Summary"
+
+#: /usr/src/app/config/config.xml:890
+msgid "plan_submission_summary_17 long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:514
+msgid "A_congress17_plan_equipopulation_summary short label"
+msgstr "Target Population (747,199)"
+
+#: /usr/src/app/config/config.xml:514
+msgid "A_congress17_plan_equipopulation_summary label"
+msgstr "Target Population (747,199)"
+
+#: /usr/src/app/config/config.xml:514
+msgid "A_congress17_plan_equipopulation_summary long description"
+msgstr ""
+"The population of each Congressional district must be 747,199 +/- 0.5%."
+
+#: /usr/src/app/config/config.xml:113
+msgid "B_congress17_plan_noncontiguous short label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:113
+msgid "B_congress17_plan_noncontiguous label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:113
+msgid "B_congress17_plan_noncontiguous long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:545
+msgid "C_congress17_plan_competitiveness short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:545
+msgid "C_congress17_plan_competitiveness label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:545
+msgid "C_congress17_plan_competitiveness long description"
+msgstr ""
+"Each plan's overall political competitiveness is determined by finding the "
+"number of districts whose Democratic partisan index and Republican partisan "
+"index are within 10% of each other."
+
+#: /usr/src/app/config/config.xml:576
+msgid "D_congress17_plan_vapnownh_thresh short label"
+msgstr "Majority-Minority"
+
+#: /usr/src/app/config/config.xml:576
+msgid "D_congress17_plan_vapnownh_thresh label"
+msgstr "Majority-Minority"
+
+#: /usr/src/app/config/config.xml:576
+msgid "D_congress17_plan_vapnownh_thresh long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:94
+msgid "district_02_contiguous short label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:94
+msgid "district_02_contiguous label"
+msgstr "Contiguous"
+
+#: /usr/src/app/config/config.xml:94
+msgid "district_02_contiguous long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:87
+msgid "district_03_polsbypopper short label"
+msgstr "Compactness"
+
+#: /usr/src/app/config/config.xml:87
+msgid "district_03_polsbypopper label"
+msgstr "Compactness"
+
+#: /usr/src/app/config/config.xml:87
+msgid "district_03_polsbypopper long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:351
+msgid "district_12_black_percent short label"
+msgstr "Black Population"
+
+#: /usr/src/app/config/config.xml:351
+msgid "district_12_black_percent label"
+msgstr "Black Population"
+
+#: /usr/src/app/config/config.xml:351
+msgid "district_12_black_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:360
+msgid "district_13_hispanic_percent short label"
+msgstr "Hispanic Population"
+
+#: /usr/src/app/config/config.xml:360
+msgid "district_13_hispanic_percent label"
+msgstr "Hispanic Population"
+
+#: /usr/src/app/config/config.xml:360
+msgid "district_13_hispanic_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:369
+msgid "district_11_asian_percent short label"
+msgstr "Asian Population"
+
+#: /usr/src/app/config/config.xml:369
+msgid "district_11_asian_percent label"
+msgstr "Asian Population"
+
+#: /usr/src/app/config/config.xml:369
+msgid "district_11_asian_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:294
+msgid "district_27_votedem_percent short label"
+msgstr "Registered Democrat"
+
+#: /usr/src/app/config/config.xml:294
+msgid "district_27_votedem_percent label"
+msgstr "Registered Democrat"
+
+#: /usr/src/app/config/config.xml:294
+msgid "district_27_votedem_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:310
+msgid "district_28_voterep_percent short label"
+msgstr "Registered Republican"
+
+#: /usr/src/app/config/config.xml:310
+msgid "district_28_voterep_percent label"
+msgstr "Registered Republican"
+
+#: /usr/src/app/config/config.xml:310
+msgid "district_28_voterep_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:326
+msgid "district_29_voteoth_percent short label"
+msgstr "Registered Other"
+
+#: /usr/src/app/config/config.xml:326
+msgid "district_29_voteoth_percent label"
+msgstr "Registered Other"
+
+#: /usr/src/app/config/config.xml:326
+msgid "district_29_voteoth_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:1021
+msgid "congress17_sidebar_basic short label"
+msgstr "Basic Information"
+
+#: /usr/src/app/config/config.xml:1021
+msgid "congress17_sidebar_basic label"
+msgstr "Basic Information"
+
+#: /usr/src/app/config/config.xml:1021
+msgid "congress17_sidebar_basic long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:851
+msgid "congressional17_panel_summary short label"
+msgstr "Plan Summary"
+
+#: /usr/src/app/config/config.xml:851
+msgid "congressional17_panel_summary label"
+msgstr "Plan Summary"
+
+#: /usr/src/app/config/config.xml:851
+msgid "congressional17_panel_summary long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:871
+msgid "congressional17_panel_info short label"
+msgstr "Basic Information"
+
+#: /usr/src/app/config/config.xml:871
+msgid "congressional17_panel_info label"
+msgstr "Basic Information"
+
+#: /usr/src/app/config/config.xml:871
+msgid "congressional17_panel_info long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:131
+msgid "congressional17_population short label"
+msgstr "Tot Pop"
+
+#: /usr/src/app/config/config.xml:131
+msgid "congressional17_population label"
+msgstr "Tot Pop"
+
+#: /usr/src/app/config/config.xml:131
+msgid "congressional17_population long description"
+msgstr "Population interval calculator for congressional 17 districts."
+
+#: /usr/src/app/config/config.xml:1026
+msgid "congress17_sidebar_demo short label"
+msgstr "Demographics"
+
+#: /usr/src/app/config/config.xml:1026
+msgid "congress17_sidebar_demo label"
+msgstr "Demographics"
+
+#: /usr/src/app/config/config.xml:1026
+msgid "congress17_sidebar_demo long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:1031
+msgid "congress17_sidebar_competitiveness short label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:1031
+msgid "congress17_sidebar_competitiveness label"
+msgstr "Competitiveness"
+
+#: /usr/src/app/config/config.xml:1031
+msgid "congress17_sidebar_competitiveness long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:1045
+msgid "congress17_reports short label"
+msgstr "Congressional Reports"
+
+#: /usr/src/app/config/config.xml:1045
+msgid "congress17_reports label"
+msgstr "Congressional Reports"
+
+#: /usr/src/app/config/config.xml:1045
+msgid "congress17_reports long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:939
+msgid "report_panel_population_17 short label"
+msgstr "Population"
+
+#: /usr/src/app/config/config.xml:939
+msgid "report_panel_population_17 label"
+msgstr "Population"
+
+#: /usr/src/app/config/config.xml:939
+msgid "report_panel_population_17 long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:616
+msgid "report_score_total_population_congress17 short label"
+msgstr "Total Population"
+
+#: /usr/src/app/config/config.xml:616
+msgid "report_score_total_population_congress17 label"
+msgstr "Total Population"
+
+#: /usr/src/app/config/config.xml:616
+msgid "report_score_total_population_congress17 long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:142
+msgid "district_19_vapblk_percent short label"
+msgstr "Black VAP"
+
+#: /usr/src/app/config/config.xml:142
+msgid "district_19_vapblk_percent label"
+msgstr "Black VAP"
+
+#: /usr/src/app/config/config.xml:142
+msgid "district_19_vapblk_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:158
+msgid "district_20_vaphisp_percent short label"
+msgstr "His. VAP"
+
+#: /usr/src/app/config/config.xml:158
+msgid "district_20_vaphisp_percent label"
+msgstr "His. VAP"
+
+#: /usr/src/app/config/config.xml:158
+msgid "district_20_vaphisp_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:174
+msgid "district_18_vapasn_percent short label"
+msgstr "Asian VAP"
+
+#: /usr/src/app/config/config.xml:174
+msgid "district_18_vapasn_percent label"
+msgstr "Asian VAP"
+
+#: /usr/src/app/config/config.xml:174
+msgid "district_18_vapasn_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:214
+msgid "district_21_vapnam_percent short label"
+msgstr "Nat. Amer. VAP"
+
+#: /usr/src/app/config/config.xml:214
+msgid "district_21_vapnam_percent label"
+msgstr "Nat. Amer. VAP"
+
+#: /usr/src/app/config/config.xml:214
+msgid "district_21_vapnam_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:230
+msgid "district_22_vappild_percent short label"
+msgstr "Pac. Isldr. VAP"
+
+#: /usr/src/app/config/config.xml:230
+msgid "district_22_vappild_percent label"
+msgstr "Pac. Isldr. VAP"
+
+#: /usr/src/app/config/config.xml:230
+msgid "district_22_vappild_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:246
+msgid "district_25_vapoth_percent short label"
+msgstr "Other VAP"
+
+#: /usr/src/app/config/config.xml:246
+msgid "district_25_vapoth_percent label"
+msgstr "Other VAP"
+
+#: /usr/src/app/config/config.xml:246
+msgid "district_25_vapoth_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:262
+msgid "district_24_vaptwo_percent short label"
+msgstr "Two+ Races VAP"
+
+#: /usr/src/app/config/config.xml:262
+msgid "district_24_vaptwo_percent label"
+msgstr "Two+ Races VAP"
+
+#: /usr/src/app/config/config.xml:262
+msgid "district_24_vaptwo_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:278
+msgid "district_26_prison_percent short label"
+msgstr "Incarcerated"
+
+#: /usr/src/app/config/config.xml:278
+msgid "district_26_prison_percent label"
+msgstr "Incarcerated"
+
+#: /usr/src/app/config/config.xml:278
+msgid "district_26_prison_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:342
+msgid "district_15_white_percent short label"
+msgstr "White Population"
+
+#: /usr/src/app/config/config.xml:342
+msgid "district_15_white_percent label"
+msgstr "White Population"
+
+#: /usr/src/app/config/config.xml:342
+msgid "district_15_white_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:378
+msgid "district_10_amer_ind_percent short label"
+msgstr "American Indian/Alaskan Native"
+
+#: /usr/src/app/config/config.xml:378
+msgid "district_10_amer_ind_percent label"
+msgstr "American Indian/Alaskan Native"
+
+#: /usr/src/app/config/config.xml:378
+msgid "district_10_amer_ind_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:387
+msgid "district_14_native_pac_percent short label"
+msgstr "Native Hawaiian/Pacific Islander"
+
+#: /usr/src/app/config/config.xml:387
+msgid "district_14_native_pac_percent label"
+msgstr "Native Hawaiian/Pacific Islander"
+
+#: /usr/src/app/config/config.xml:387
+msgid "district_14_native_pac_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:396
+msgid "district_17_other_percent short label"
+msgstr "Other Race"
+
+#: /usr/src/app/config/config.xml:396
+msgid "district_17_other_percent label"
+msgstr "Other Race"
+
+#: /usr/src/app/config/config.xml:396
+msgid "district_17_other_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:405
+msgid "district_16_two_percent short label"
+msgstr "Two or more races"
+
+#: /usr/src/app/config/config.xml:405
+msgid "district_16_two_percent label"
+msgstr "Two or more races"
+
+#: /usr/src/app/config/config.xml:405
+msgid "district_16_two_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:414
+msgid "district_04_ageu18_percent short label"
+msgstr "Under 18"
+
+#: /usr/src/app/config/config.xml:414
+msgid "district_04_ageu18_percent label"
+msgstr "Under 18"
+
+#: /usr/src/app/config/config.xml:414
+msgid "district_04_ageu18_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:423
+msgid "district_05_age1824_percent short label"
+msgstr "18-24"
+
+#: /usr/src/app/config/config.xml:423
+msgid "district_05_age1824_percent label"
+msgstr "18-24"
+
+#: /usr/src/app/config/config.xml:423
+msgid "district_05_age1824_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:432
+msgid "district_06_age2534_percent short label"
+msgstr "25-34"
+
+#: /usr/src/app/config/config.xml:432
+msgid "district_06_age2534_percent label"
+msgstr "25-34"
+
+#: /usr/src/app/config/config.xml:432
+msgid "district_06_age2534_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:441
+msgid "district_07_age3549_percent short label"
+msgstr "35-49"
+
+#: /usr/src/app/config/config.xml:441
+msgid "district_07_age3549_percent label"
+msgstr "35-49"
+
+#: /usr/src/app/config/config.xml:441
+msgid "district_07_age3549_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:450
+msgid "district_08_age5064_percent short label"
+msgstr "50-64"
+
+#: /usr/src/app/config/config.xml:450
+msgid "district_08_age5064_percent label"
+msgstr "50-64"
+
+#: /usr/src/app/config/config.xml:450
+msgid "district_08_age5064_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:459
+msgid "district_09_age65o_percent short label"
+msgstr "65+"
+
+#: /usr/src/app/config/config.xml:459
+msgid "district_09_age65o_percent label"
+msgstr "65+"
+
+#: /usr/src/app/config/config.xml:459
+msgid "district_09_age65o_percent long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:477
+msgid "congress17_plan_count_districts short label"
+msgstr "Count Districts"
+
+#: /usr/src/app/config/config.xml:477
+msgid "congress17_plan_count_districts label"
+msgstr "Count Districts"
+
+#: /usr/src/app/config/config.xml:477
+msgid "congress17_plan_count_districts long description"
+msgstr ""
+"The number of districts in a Congressional redistricting plan must be 17."
+
+#: /usr/src/app/config/config.xml:504
+msgid "congress17_plan_equipopulation_validation short label"
+msgstr "Target Population (747,199)"
+
+#: /usr/src/app/config/config.xml:504
+msgid "congress17_plan_equipopulation_validation label"
+msgstr "Target Population (747,199)"
+
+#: /usr/src/app/config/config.xml:504
+msgid "congress17_plan_equipopulation_validation long description"
+msgstr ""
+"The population of each Congressional district must be 747,199 +/- 0.5%."
+
+#: /usr/src/app/config/config.xml:1072
+msgid "congress17-equipop short label"
+msgstr "Equipopulation - Congress"
+
+#: /usr/src/app/config/config.xml:1072
+msgid "congress17-equipop label"
+msgstr "Equipopulation - Congress"
+
+#: /usr/src/app/config/config.xml:1072
+msgid "congress17-equipop long description"
+msgstr ""
+"<p>Your plan does not meet the competition criteria for "
+"Equipopulation:</p><p>The population of each Congressional district must be "
+"747,199 +/- 0.5%.</p>"
+
+#: /usr/src/app/config/config.xml:1076
+msgid "congress17-contiguous short label"
+msgstr "AllContiguous - Congress"
+
+#: /usr/src/app/config/config.xml:1076
+msgid "congress17-contiguous label"
+msgstr "AllContiguous - Congress"
+
+#: /usr/src/app/config/config.xml:1076
+msgid "congress17-contiguous long description"
+msgstr ""
+"<p>Your map does not meet the constitutional criteria for "
+"contiguity.</p><p>Each mapping unit must be connected to a district. No "
+"assigned unit can be disconnected from the rest of its district. All "
+"districts within a map must be contiguous."
+
+#: /usr/src/app/config/config.xml:1079
+msgid "congress17-district-count short label"
+msgstr "CountDistricts - Congress"
+
+#: /usr/src/app/config/config.xml:1079
+msgid "congress17-district-count label"
+msgstr "CountDistricts - Congress"
+
+#: /usr/src/app/config/config.xml:1079
+msgid "congress17-district-count long description"
+msgstr ""
+
+#: /usr/src/app/config/config.xml:1082
+msgid "congress17-assigned short label"
+msgstr "AllTractsAssigned - Congress"
+
+#: /usr/src/app/config/config.xml:1082
+msgid "congress17-assigned label"
+msgstr "AllTractsAssigned - Congress"
+
+#: /usr/src/app/config/config.xml:1082
+msgid "congress17-assigned long description"
 msgstr ""

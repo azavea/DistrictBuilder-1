@@ -540,11 +540,12 @@
             </ScoreFunction>
 
             <ScoreFunction id="C_congress17_plan_competitiveness" type="plan"
-                calculator="redistricting.calculators.Competitiveness"
+                calculator="redistricting.calculators.CompetitivenessSimple"
                 label="Competitiveness"
-                description="Each plan&apos;s overall political competitiveness is determined by averaging each district.s &apos;partisan differential&apos;.  The partisan differential of each district is calculated by subtracting the Democratic &apos;partisan index&apos; from the Republican &apos;partisan index&apos;.&lt;br/&gt;&lt;br/&gt;&apos;Heavily&apos; competitive districts are districts with partisan differentials of less than or equal to 5%. &apos;Generally&apos; competitive districts are districts with partisan differentials of greater than 5% but less than 10%.">
+                description="Each plan&apos;s overall political competitiveness is determined by finding the number of districts whose Democratic partisan index and Republican partisan index are within 10% of each other.">
                 <SubjectArgument name="democratic" ref="votedem" />
                 <SubjectArgument name="republican" ref="voterep" />
+                <SubjectArgument name="vap" ref="vap" />
                 <Argument name="target" value="17"/>
             </ScoreFunction>
 
@@ -554,6 +555,15 @@
                 description="Each plan&apos;s overall political competitiveness is determined by averaging each district.s &apos;partisan differential&apos;.  The partisan differential of each district is calculated by subtracting the Democratic &apos;partisan index&apos; from the Republican &apos;partisan index&apos;.&lt;br/&gt;&lt;br/&gt;&apos;Heavily&apos; competitive districts are districts with partisan differentials of less than or equal to 5%. &apos;Generally&apos; competitive districts are districts with partisan differentials of greater than 5% but less than 10%.">
                 <SubjectArgument name="democratic" ref="votedem" />
                 <SubjectArgument name="republican" ref="voterep" />
+            </ScoreFunction>
+
+            <ScoreFunction id="congress17_plan_competitiveness_leaderboard" type="plan"
+                calculator="redistricting.calculators.CompetitivenessSimple"
+                label="Competitiveness"
+                description="Each plan&apos;s overall political competitiveness is determined by finding the number of districts whose Democratic partisan index and Republican partisan index are within 10% of each other.">
+                <SubjectArgument name="democratic" ref="votedem" />
+                <SubjectArgument name="republican" ref="voterep" />
+                <SubjectArgument name="vap" ref="vap" />
             </ScoreFunction>
 
             <ScoreFunction id="D_congress_plan_vapnownh_thresh" type="plan"
@@ -819,7 +829,7 @@
             <ScorePanel id="panel_competitiveness_all_17" type="plan" position="3"
                 title="Competitiveness" template="leaderboard_panel_all.html"
                 is_ascending="false">
-                <Score ref="congress_plan_competitiveness_leaderboard" />
+                <Score ref="congress17_plan_competitiveness_leaderboard" />
             </ScorePanel>
 
             <ScorePanel id="panel_competitiveness_mine_17" type="plan" position="3"
