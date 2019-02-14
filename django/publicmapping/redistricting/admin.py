@@ -27,10 +27,14 @@ License:
 Author:
     Andrew Jennings, David Zwarg
 """
+import json
+import inflect
+from functools import update_wrapper
 
-from models import *
-from forms import *
-from tasks import *
+import models
+from forms import SubjectUploadForm
+from tasks import reaggregate_plan, validate_plan, verify_count
+
 from django import forms
 from django.http import HttpResponse
 from django.contrib.gis import admin
@@ -40,9 +44,6 @@ from django.contrib.admin import helpers
 from django.utils.translation import ugettext_lazy, ugettext as _
 from django.core.exceptions import PermissionDenied
 from django import template
-from django.conf import settings
-import inflect
-from functools import update_wrapper
 
 
 class ComputedCharacteristicAdmin(admin.ModelAdmin):
@@ -89,7 +90,7 @@ class CharacteristicInline(admin.TabularInline):
     """
 
     # The model that this inline class is displaying.
-    model = Characteristic
+    model = models.Characteristic
 
 
 class GeounitAdmin(admin.OSMGeoAdmin):
@@ -140,7 +141,7 @@ class DistrictInline(admin.TabularInline):
     )
 
     # The model that this inline class is displaying.
-    model = District
+    model = models.District
 
 
 class DistrictAdmin(admin.OSMGeoAdmin):
@@ -212,7 +213,7 @@ class PlanAdmin(admin.ModelAdmin):
         for plan in queryset:
             # Set the reaggregating flag
             # (needed for the state to display on immediate refresh)
-            plan.processing_state = ProcessingState.REAGGREGATING
+            plan.processing_state = models.ProcessingState.REAGGREGATING
             plan.save()
 
             # Reaggregate asynchronously
@@ -379,7 +380,7 @@ class SubjectAdmin(admin.ModelAdmin):
         """
         opts = modeladmin.model._meta
         app_label = opts.app_label
-        geolevel, nunits = LegislativeLevel.get_basest_geolevel_and_count()
+        geolevel, nunits = models.LegislativeLevel.get_basest_geolevel_and_count()
         context = {
             # get geounits at the basest of all base geolevels
             'geounits':
@@ -545,7 +546,7 @@ class ScorePanelAdmin(admin.ModelAdmin):
 
 
 class ScoreArgumentInline(admin.TabularInline):
-    model = ScoreArgument
+    model = models.ScoreArgument
 
 
 class ScoreFunctionAdmin(admin.ModelAdmin):
@@ -614,22 +615,22 @@ class ValidationCriteriaAdmin(admin.ModelAdmin):
 
 
 # Register these classes with the admin interface.
-admin.site.register(Geounit, GeounitAdmin)
-admin.site.register(Region)
-admin.site.register(ComputedCharacteristic, ComputedCharacteristicAdmin)
-admin.site.register(Characteristic, CharacteristicAdmin)
-admin.site.register(Subject, SubjectAdmin)
-admin.site.register(Geolevel)
-admin.site.register(LegislativeBody)
-admin.site.register(LegislativeLevel)
-admin.site.register(Plan, PlanAdmin)
-admin.site.register(District, DistrictAdmin)
-admin.site.register(Profile)
-admin.site.register(ScoreArgument, ScoreArgumentAdmin)
-admin.site.register(ScoreDisplay, ScoreDisplayAdmin)
-admin.site.register(ScoreFunction, ScoreFunctionAdmin)
-admin.site.register(ScorePanel, ScorePanelAdmin)
-admin.site.register(ValidationCriteria, ValidationCriteriaAdmin)
-admin.site.register(ComputedDistrictScore)
-admin.site.register(ComputedPlanScore)
-admin.site.register(ContiguityOverride)
+admin.site.register(models.Geounit, GeounitAdmin)
+admin.site.register(models.Region)
+admin.site.register(models.ComputedCharacteristic, ComputedCharacteristicAdmin)
+admin.site.register(models.Characteristic, CharacteristicAdmin)
+admin.site.register(models.Subject, SubjectAdmin)
+admin.site.register(models.Geolevel)
+admin.site.register(models.LegislativeBody)
+admin.site.register(models.LegislativeLevel)
+admin.site.register(models.Plan, PlanAdmin)
+admin.site.register(models.District, DistrictAdmin)
+admin.site.register(models.Profile)
+admin.site.register(models.ScoreArgument, ScoreArgumentAdmin)
+admin.site.register(models.ScoreDisplay, ScoreDisplayAdmin)
+admin.site.register(models.ScoreFunction, ScoreFunctionAdmin)
+admin.site.register(models.ScorePanel, ScorePanelAdmin)
+admin.site.register(models.ValidationCriteria, ValidationCriteriaAdmin)
+admin.site.register(models.ComputedDistrictScore)
+admin.site.register(models.ComputedPlanScore)
+admin.site.register(models.ContiguityOverride)
