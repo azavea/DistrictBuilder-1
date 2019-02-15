@@ -51,6 +51,6 @@ urlpatterns = ([
     url(r'^comments/', include('django_comments.urls')),
     url(r'^proxy/', publicmapping_views.proxy),
     url(r'^session', publicmapping_views.session),
-    url(r'^admin', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^i18n/', include('django.conf.urls.i18n'))
 ])
