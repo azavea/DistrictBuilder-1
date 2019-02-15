@@ -45,6 +45,59 @@ from django.utils.translation import ugettext_lazy, ugettext as _
 from django.core.exceptions import PermissionDenied
 from django import template
 
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
+
+
+class ProfileInline(admin.StackedInline):
+    model = models.Profile
+    can_delete = False
+    verbose_name_plural = 'Profile'
+    fk_name = 'user'
+    fields = (
+        'organization',
+        'county',
+        'contest_division',
+        'social_media',
+        ('how_did_you_hear', 'where_did_you_hear')
+    )
+
+
+class CustomUserAdmin(UserAdmin):
+    inlines = (ProfileInline, )
+
+    def __init__(self, *args, **kwargs):
+        super(UserAdmin, self).__init__(*args, **kwargs)
+        # Add profile fields to the list display
+        # These have to be callables as Django Admin panel doesn't allow FK joins in field names
+        self.list_display = list(self.list_display) + [
+            'get_organization',
+            'get_county',
+            'get_division',
+            'get_social_media',
+        ]
+
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
+
+    def get_organization(self, user):
+        return user.profile.organization
+    get_organization.short_description = "School/Org"
+
+    def get_county(self, user):
+        return user.profile.county
+    get_county.short_description = "County"
+
+    def get_division(self, user):
+        return user.profile.contest_division
+    get_division.short_description = "Division"
+
+    def get_social_media(self, user):
+        return user.profile.social_media
+    get_social_media.short_description = "Social media"
+
 
 class ComputedCharacteristicAdmin(admin.ModelAdmin):
     """
@@ -613,6 +666,10 @@ class ValidationCriteriaAdmin(admin.ModelAdmin):
         'function',
     )
 
+
+# Replace the default UserAdmin with our CustomUserAdmin
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 
 # Register these classes with the admin interface.
 admin.site.register(models.Geounit, GeounitAdmin)
