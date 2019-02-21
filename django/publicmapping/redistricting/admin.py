@@ -75,6 +75,8 @@ class CustomUserAdmin(UserAdmin):
             'get_county',
             'get_division',
             'get_social_media',
+            'get_how_did_you_hear',
+            'get_where_did_you_hear'
         ]
 
     def get_inline_instances(self, request, obj=None):
@@ -97,6 +99,14 @@ class CustomUserAdmin(UserAdmin):
     def get_social_media(self, user):
         return user.profile.social_media
     get_social_media.short_description = "Social media"
+
+    def get_how_did_you_hear(self, user):
+        return user.profile.how_did_you_hear
+    get_how_did_you_hear.short_description = "How did you hear?"
+
+    def get_where_did_you_hear(self, user):
+        return user.profile.where_did_you_hear
+    get_where_did_you_hear.short_description = "Where did you hear?"
 
 
 class ComputedCharacteristicAdmin(admin.ModelAdmin):
