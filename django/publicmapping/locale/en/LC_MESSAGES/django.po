@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-08 17:19-0500\n"
+"POT-Creation-Date: 2019-03-25 12:06-0400\n"
 "PO-Revision-Date: 2012-11-06 16:01-0600\n"
 "Last-Translator: David Zwarg <dzwarg@azavea.com>\n"
 "Language-Team: Azavea <info@azavea.com>\n"
@@ -136,7 +136,7 @@ msgid "Sign Up"
 msgstr ""
 
 #: publicmapping/templates/account.html:218
-#: redistricting/templates/editplan.html:518
+#: redistricting/templates/editplan.html:527
 msgid "Indicates required field"
 msgstr ""
 
@@ -441,12 +441,12 @@ msgid "Frequently Asked Questions"
 msgstr ""
 
 #: publicmapping/templates/index.html:144
-#: redistricting/templates/editplan.html:526
+#: redistricting/templates/editplan.html:535
 msgid "Tweet"
 msgstr ""
 
 #: publicmapping/templates/index.html:159
-#: redistricting/templates/editplan.html:541
+#: redistricting/templates/editplan.html:550
 msgid "Share"
 msgstr ""
 
@@ -750,17 +750,17 @@ msgstr ""
 msgid "Your Password Reset Request"
 msgstr ""
 
-#: redistricting/admin.py:342
+#: redistricting/admin.py:406
 #, python-format
 msgid "Successfully deleted %(count)d %(item)s"
 msgstr ""
 
-#: redistricting/admin.py:370
+#: redistricting/admin.py:434
 #, python-format
 msgid "Delete selected %(verbose_name_plural)s"
 msgstr ""
 
-#: redistricting/admin.py:499
+#: redistricting/admin.py:563
 msgid "No task with that id."
 msgstr "No task with that id."
 
@@ -897,7 +897,7 @@ msgid ""
 "locked."
 msgstr ""
 
-#: redistricting/models.py:3583
+#: redistricting/models.py:3584
 msgid "Unassigned"
 msgstr ""
 
@@ -1453,21 +1453,20 @@ msgstr ""
 msgid "Other (explain in your personal statement)"
 msgstr ""
 
-#: redistricting/templates/editplan.html:487
+#: redistricting/templates/editplan.html:497
 msgid ""
 "\n"
-"                    Personal Statement &ndash; Please write or paste your "
-"Personal Statement (if\n"
-"                    text) into the box below. Or, include a link to your "
+"                    Personal Statement: Please include your Personal "
+"Statement (if\n"
+"                    text) in the box below. Or, include a link to your "
 "statement (if video, audio,\n"
-"                    or other). See <a href=\"https://drawthelinespa.org/"
-"uploads/attachments/cjlqoibxz01vjctr3dpmvfzz8-competition-dtlrules-2018-09."
-"pdf\" target=\"_blank\">Competition Rules</a> for\n"
-"                    instructions on how to do your Personal Statement.\n"
+"                    or other). <a href=\"https://drawthelinespa.org/about-us/"
+"help/submitting-your-personal-statement\" target=\"_blank\">Click here for "
+"more instructions</a>.\n"
 "                  "
 msgstr ""
 
-#: redistricting/templates/editplan.html:502
+#: redistricting/templates/editplan.html:511
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -1504,35 +1503,35 @@ msgstr ""
 "                    map whenever feasible.\n"
 "                    "
 
-#: redistricting/templates/editplan.html:514
+#: redistricting/templates/editplan.html:523
 msgid "Submit Final Plan"
 msgstr "Submit Final Map"
 
-#: redistricting/templates/editplan.html:570
+#: redistricting/templates/editplan.html:579
 msgid "Community Info"
 msgstr ""
 
-#: redistricting/templates/editplan.html:571
+#: redistricting/templates/editplan.html:580
 msgid "0"
 msgstr ""
 
-#: redistricting/templates/editplan.html:575
+#: redistricting/templates/editplan.html:584
 msgid "1. Edit Community Label:"
 msgstr ""
 
-#: redistricting/templates/editplan.html:582
+#: redistricting/templates/editplan.html:591
 msgid "2. Edit Community Type:"
 msgstr ""
 
-#: redistricting/templates/editplan.html:593
+#: redistricting/templates/editplan.html:602
 msgid "3. Comments:"
 msgstr ""
 
-#: redistricting/templates/editplan.html:601
+#: redistricting/templates/editplan.html:610
 msgid "Oops!"
 msgstr ""
 
-#: redistricting/templates/editplan.html:602
+#: redistricting/templates/editplan.html:611
 msgid "Sorry, your information could not be saved. Please try again later."
 msgstr ""
 

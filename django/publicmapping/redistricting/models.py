@@ -2871,6 +2871,7 @@ class PlanSubmission(models.Model):
     # to the judges, so we can store it as a text field.
     values_choices = models.CharField(max_length=100, blank=True)
     values_statement = models.TextField(blank=True)
+    endorsers = models.TextField(blank=True)
 
     REGIONS = {
         'Eastern': set([
