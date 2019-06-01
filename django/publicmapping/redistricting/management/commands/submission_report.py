@@ -28,7 +28,7 @@ class Command(BaseCommand):
 
         template = loader.get_template('submission_summary.html')
         # We're going to reuse the summary panel from the main map editing page
-        score_panel = ScorePanel.objects.filter(name='plan_submission_summary')[0]
+        score_panel = ScorePanel.objects.filter(name='plan_submission_summary_17')[0]
         districts = [d for d in submission.plan.district_set.all() if not d.is_unassigned]
         # The above Score Display is split into two ScorePanels: the top summary panel and the
         # bottom panel of per-district scores. We want the summary panel.
@@ -48,7 +48,7 @@ class Command(BaseCommand):
         leaflet_js = staticfiles_storage.open('leaflet/leaflet.js').read()
         context = dict(
             plan_url='https://{host}{path}'.format(
-                host=settings.ALLOWED_HOSTS[0],
+                host='map.drawthelinespa.org',
                 path=reverse('plan-view', args=[submission.plan_id])
             ),
             submission=submission,
