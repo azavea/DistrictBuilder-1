@@ -3514,6 +3514,9 @@ class Profile(models.Model):
     # A user's social media handles
     social_media = models.CharField(max_length=500, null=True)
 
+    # A user's answer for "Number of Users on this Account"
+    num_users_on_account = models.PositiveIntegerField(default=1)
+
     def __unicode__(self):
         """
         Represent the Profile as a unicode string. This is the a string
