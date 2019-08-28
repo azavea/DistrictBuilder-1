@@ -58,6 +58,7 @@ class ProfileInline(admin.StackedInline):
         'organization',
         'county',
         'contest_division',
+        'num_users_on_account'
         'social_media',
         ('how_did_you_hear', 'where_did_you_hear')
     )
@@ -74,6 +75,7 @@ class CustomUserAdmin(UserAdmin):
             'get_organization',
             'get_county',
             'get_division',
+            'get_num_users_on_account',
             'get_social_media',
             'get_how_did_you_hear',
             'get_where_did_you_hear'
@@ -95,6 +97,10 @@ class CustomUserAdmin(UserAdmin):
     def get_division(self, user):
         return user.profile.contest_division
     get_division.short_description = "Division"
+
+    def get_num_users_on_account(self, user):
+        return user.profile.num_users_on_account
+    get_num_users_on_account.short_description = "Num users"
 
     def get_social_media(self, user):
         return user.profile.social_media
