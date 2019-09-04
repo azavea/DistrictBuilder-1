@@ -420,6 +420,7 @@ def get_user_info(user):
         'how_did_you_hear': profile.how_did_you_hear or '',
         'where_did_you_hear': profile.where_did_you_hear,
         'social_media': profile.social_media,
+        'num_users_on_account': profile.num_users_on_account,
         'id': user.id
     }
 

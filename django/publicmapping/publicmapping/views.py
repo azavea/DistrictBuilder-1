@@ -123,6 +123,7 @@ def userregister(request):
     howhear = request.POST.get('howhear', None)
     wherehear = request.POST.get('wherehear', None)
     social_media = request.POST.get('socialmedia', None)
+    num_users_on_account = request.POST.get('numusersonaccount', None)
 
     status = {'success': False}
     if username != '' and password != '':
@@ -156,6 +157,7 @@ def userregister(request):
             profile.how_did_you_hear = howhear
             profile.where_did_you_hear = wherehear
             profile.social_media = social_media
+            profile.num_users_on_account = num_users_on_account
             profile.save()
 
             login(request, user)
@@ -195,6 +197,7 @@ def userupdate(request):
     howhear = request.POST.get('howhear', None)
     wherehear = request.POST.get('wherehear', None)
     social_media = request.POST.get('socialmedia', None)
+    num_users_on_account = request.POST.get('numusersonaccount', None)
     id = request.POST.get('userid', None)
 
     status = {'success': False, 'message': 'Unspecified error.'}
@@ -224,6 +227,7 @@ def userupdate(request):
                 profile.how_did_you_hear = howhear
                 profile.where_did_you_hear = wherehear
                 profile.social_media = social_media
+                profile.num_users_on_account = num_users_on_account
                 profile.save()
 
                 status['success'] = True

@@ -72,6 +72,16 @@
                 {% endif %}/></td>
             </tr>
             <tr>
+                <td colspan="2"><span class="recommended">How many users/students share this account? If it's just you, enter 1.</span></td>
+            </tr>
+            <tr>
+                <td class="fname">{% trans "Number of Users on<br>this Account" %} *</td>
+                <td><input id="numusersonaccount" name="numusersonaccount" class="field required" type="number" min="1"
+                {% if is_registered %}
+                    value="{{ userinfo.num_users_on_account }}"
+                {% endif %}/></td>
+            </tr>
+            <tr>
                 <td class="fname">{% trans "County" %} *</td>
                 <td>
                     <select id="county" name="county" class="field required" maxlength="50">

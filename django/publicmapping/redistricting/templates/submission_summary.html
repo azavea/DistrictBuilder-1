@@ -68,11 +68,7 @@
     </script>
     <script type="text/javascript">
       var map = L.map('leaflet');
-      L.tileLayer(
-        'https://api.mapbox.com/styles/v1/tgilcrest/cjfx0n99k069t2rq8tw784u2h/tiles/256/' +
-        '{z}/{x}/{y}?access_token=' +
-        'pk.eyJ1IjoidGdpbGNyZXN0IiwiYSI6ImNqZnd6d2pqMzBqc2MzMm53MGgybWltOXAifQ.I2v96bMX7g-XPckWlDwJ5Q'
-      ).addTo(map);
+      L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}').addTo(map);
       layer.addTo(map);
       map.fitBounds(layer.getBounds());
     </script>

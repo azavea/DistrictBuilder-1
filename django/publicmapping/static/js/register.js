@@ -87,6 +87,8 @@ $(function(){
             userid = frm.find('#userid');
             howhear = $("#how_did_you_hear option:selected").val();
             wherehear = $("#where_did_you_hear").val();
+            numusersonaccountfield = frm.find('#numusersonaccount');
+            numusersonaccount = numusersonaccountfield.val();
 
         var validateUsername = function(name) {
             if ($.trim(name) === '' ||
@@ -167,6 +169,11 @@ $(function(){
             return false;
         }
 
+        if (numusersonaccount < 1) {
+            numusersonaccountfield.addClass('error');
+            return false;
+        }
+
         if (howhear != 'ANOTH' && howhear != 'OTHER') {
             wherehear = '';
         }
@@ -188,6 +195,7 @@ $(function(){
                 howhear:howhear,
                 wherehear:wherehear,
                 socialmedia:$('#socialmedia_textarea').val(),
+                numusersonaccount:$('#numusersonaccount').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
             },
             dataType:'json',
