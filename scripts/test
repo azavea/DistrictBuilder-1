@@ -27,7 +27,7 @@ then
     then
         usage
     else
-        if which shellcheck &>/dev/null; then
+        if command -v shellcheck; then
             echo "Linting STRTA scripts"
             find ./scripts -type f -print0 | xargs -0 -r shellcheck
         fi
